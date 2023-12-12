@@ -4,7 +4,6 @@ import cookieParser from "cookie-parser";
 import LogMiddleware from "./middlewares/log.middleware.js";
 import ErrorHandlingMiddleware from "./middlewares/error-handling.middleware.js";
 
-const { users } = db;
 const app = express();
 const port = 3000;
 
