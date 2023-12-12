@@ -1,0 +1,48 @@
+@host=http://localhost:3000
+
+// auth, users router
+### 회원가입
+POST {{host}}/api/users
+Content-Type: application/json
+
+{
+  "email" : "test@example.com",
+  "name" : "test",
+  "password" : "1234",
+  "confirmPassword" : "1234"
+}
+
+### 로그인
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email" : "test@example.com",
+  "password" : "1234"
+}
+
+### 로그아웃
+POST {{host}}/api/auth/logout
+Content-Type: application/json
+
+### 내 정보 조회
+get {{host}}/api/users
+Content-Type: application/json
+
+### 내 정보 수정
+PUT {{host}}/api/users
+Content-Type: application/json
+
+{
+  "name" : "test2",
+  "password" : "1234",
+  "confirmPassword" : "1234"
+}
+
+### 내 정보 삭제
+DELETE {{host}}/api/users
+Content-Type: application/json
+
+{
+  "password" : "1234"
+}
