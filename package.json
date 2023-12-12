@@ -2,9 +2,10 @@
   "name": "arewecute",
   "version": "1.0.0",
   "description": "7ㅣ엽조의 팀프로젝트입니다.",
-  "main": "index.js",
+  "main": "src/app.js",
+  "type":"module",
   "scripts": {
-    "dev": "nodemon app.js",
+    "dev": "nodemon src/app.js",
     "migrate:up": "npx sequelize db:migrate --config config/config.cjs",
     "migrate:down": "npx sequelize db:migrate:undo --config config/config.cjs",
     "test": "echo \"Error: no test specified\" && exit 1"
