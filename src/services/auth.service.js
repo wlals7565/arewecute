@@ -1,38 +1,42 @@
+import { UsersRepository } from "../repositories/users.repository.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import db from "../../models/index.cjs";
-import {
-  PASSWORD_HASH_SALT_ROUNDS,
-  JWT_ACCESS_TOKEN_SECRET,
-  JWT_ACCESS_TOKEN_EXPIRES_IN
-} from "../constants/security.costant.js";
-import * as HttpStatus from "../errors/http-status.error.js";
-import { UsersRepository } from "../repositories/users.repository.js";
-const { Users } = db;
+import env from "dotenv";
+env.config();
+
+const accessTokenSecretKey = process.env.ACCESS_TOKEN_SECRET_KEY;
+
+const comparePassword = async (password, hash) => {
+  try {
+    return await bcrypt.compare(password, hash);
+  } catch (error) {
+    console.log(error);
+  }
+  return false;
+};
 
 export class AuthService {
-  constructor() {
-    this.usersRepository = new UsersRepository();
-  }
-  signup = async ({ email, name, password }) => {
-    const existedUser = await this.usersRepository.readOneByEmail(email);
+  authRepository = new UsersRepository();
 
-    if (existedUser) {
-      throw new HttpStatus.BadRequest("이미 가입 된 이메일");
-    }
+  login = async (email, password) => {
+    // 저장소(Repository)에게 특정 유저정보 하나를 요청합니다.
+    const user = await this.authRepository.findUsersByEmail(email);
+    // 비밀번호 확인
+    const isValidPass = await comparePassword(password, user.password);
+    if (!isValidPass) throw new Error("NotCorrectPassword");
 
-    // const hashedPassword = bcrypt.hashSync(password, PASSWORD_HASH_SALT_ROUNDS);
-
-    const newUser = await this.usersRepository.createOne({
-      email,
-      password,
-      name
+    // jwt 토큰 생성
+    const accessToken = jwt.sign({ id: user.id }, accessTokenSecretKey, {
+      expiresIn: "1m"
     });
-    // (
-    //   await Users.create({ email, password: hashedPassword, name })
-    // ).toJSON();
-    // delete newUser.password;
 
-    return newUser;
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
+      accessToken
+    };
   };
 }
