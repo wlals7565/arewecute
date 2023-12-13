@@ -9,27 +9,53 @@ module.exports = function (sequelize, DataTypes) {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      name: {
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: "users",
+          key: "id"
+        },
+        onDelete: "CASCADE"
+      },
+      petSitterId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: "pet_sitters",
+          key: "id"
+        },
+        onDelete: "CASCADE"
+      },
+      company: {
+        type: DataTypes.STRING
+      },
+      comment: {
         type: DataTypes.STRING,
         allowNull: false
       },
-      email: {
+      animal: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      status: {
         type: DataTypes.STRING,
         allowNull: false,
-        primaryKey: true
+        defaultValue: "예약중"
       },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      region: {
-        type: DataTypes.STRING,
+      reservedAt: {
+        type: DataTypes.DATE,
         allowNull: false
       },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
-        defaultValue: Sequelize.fn("now")
+        defaultValue: DataTypes.NOW
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW
       }
     },
     {

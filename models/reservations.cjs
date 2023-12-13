@@ -30,7 +30,7 @@ module.exports = function (sequelize, DataTypes) {
       company: {
         type: DataTypes.STRING
       },
-      intro: {
+      comment: {
         type: DataTypes.STRING,
         allowNull: false
       },
@@ -38,7 +38,7 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false
       },
-      state: {
+      status: {
         type: DataTypes.STRING,
         allowNull: false,
         defaultValue: "예약중"
@@ -50,13 +50,18 @@ module.exports = function (sequelize, DataTypes) {
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
-        defaultValue: Sequelize.fn("now")
+        defaultValue: DataTypes.NOW
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW
       }
     },
     {
       sequelize,
       tableName: "reservations",
-      timestamps: false,
+      timestamps: true,
       indexes: [
         {
           name: "PRIMARY",
