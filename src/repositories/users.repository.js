@@ -9,20 +9,20 @@ export class UsersRepository {
 
   findUsersById = async (id) => {
     // 아이디 조회 Users 모델의 findOne 메서드를 사용해 데이터를 요청
-    const users = await users.findOne({
+    const Users = await users.findOne({
       where: { id: +id }
     });
 
-    return users;
+    return Users;
   };
 
   findUsersByEmail = async (email) => {
     // 이메일 조회 Users 모델의 findOne 메서드를 사용해 데이터를 요청
-    const users = await users.findOne({
+    const Users = await users.findOne({
       where: { email: email }
     });
 
-    return users;
+    return Users;
   };
 
   createUser = async (email, name, hashedPassword) => {
@@ -32,7 +32,7 @@ export class UsersRepository {
         email,
         name,
         password: hashedPassword,
-        region,
+        region
       }
     });
     return createdUser;
@@ -47,7 +47,7 @@ export class UsersRepository {
       data: {
         name,
         password: hashedPassword,
-        region,
+        region
       }
     });
 
