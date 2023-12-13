@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@600&display=swap");
+
+.body {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.auth-wrapper {
+  width: 100%;
+  max-width: 420px;
+  padding: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  background-color: #ffffff;
+}
