@@ -15,14 +15,23 @@ module.exports = {
         allowNull: false
       },
       career: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      comment: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      keyword: {
+      animal: {
         type: Sequelize.STRING,
         allowNull: false
       },
       createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("now")
+      },
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn("now")
