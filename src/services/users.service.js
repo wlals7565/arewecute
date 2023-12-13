@@ -21,12 +21,13 @@ export class UsersService {
       id: user.id,
       name: user.name,
       email: user.email,
+      region: user.region,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt
     };
   };
 
-  createUser = async (email, name, password) => {
+  createUser = async (email, name, password, region) => {
     // 중복 email 확인
     const confirmEmail = await this.usersRepository.findUsersByEmail(email);
     if (confirmEmail) throw new Error("AlreadyExistEmail");
@@ -42,6 +43,7 @@ export class UsersService {
       id: createUser.id,
       name: createUser.name,
       email: createUser.email,
+      region: createUser.region,
       createdAt: createUser.createdAt,
       updatedAt: createUser.updatedAt
     };
@@ -65,6 +67,7 @@ export class UsersService {
       id: updateUser.id,
       name: updateUser.name,
       email: updateUser.email,
+      region: updateUser.region,
       createdAt: updateUser.createdAt,
       updatedAt: updateUser.updatedAt
     };
@@ -86,6 +89,7 @@ export class UsersService {
       id: user.id,
       name: user.name,
       email: user.email,
+      region: user.region,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt
     };

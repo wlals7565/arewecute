@@ -19,14 +19,14 @@ export class UsersController {
 
   createUser = async (req, res, next) => {
     try {
-      const { email, name, password, confirmPassword } = req.body;
+      const { email, name, password, confirmPassword, region } = req.body;
 
       if (!email || !password || !name) throw new Error("InvalidParamsError");
       if (!validator.isEmail(email)) throw new Error("NotEmail");
       if (!validator.equals(password, confirmPassword)) throw new Error("NotSamePasswords");
 
       // 서비스 계층에 구현된 createUser 로직을 실행합니다.
-      const createUser = await this.usersService.createUser(email, name, password);
+      const createUser = await this.usersService.createUser(email, name, password, region);
 
       return res.status(201).json({ data: createUser });
     } catch (err) {
@@ -37,11 +37,11 @@ export class UsersController {
   updateUser = async (req, res, next) => {
     try {
       const id = req.user;
-      const { name, password, confirmPassword } = req.body;
+      const { name, password, confirmPassword, region } = req.body;
       if (!validator.equals(password, confirmPassword)) throw new Error("NotSamePasswords");
 
       // 서비스 계층에 구현된 updateUser 로직을 실행합니다.
-      const updateUser = await this.usersService.updateUser(id, name, password);
+      const updateUser = await this.usersService.updateUser(id, name, password, region);
 
       return res.status(200).json({ data: updateUser });
     } catch (err) {
