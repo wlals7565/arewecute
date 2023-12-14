@@ -1,23 +1,21 @@
 import ReviewsRepository from "../repositories/reviews.repository.js";
 const reviewsRepository = new ReviewsRepository();
 export default class reviewsService {
-  async postReview() {
-    console.log("postReview in Service");
-    reviewsRepository.postReview()
+  async postReview(userId, petSitterId, comment, rate) {
+    return reviewsRepository.postReview(userId, petSitterId, comment, rate)
   }
 
-  async getReviewsByPetSitterId() {
-    console.log("getReviewsByPetSitterId in Service");
-    reviewsRepository.getReviewsByPetSitterId()
+  async getReviewsByPetSitterId(petSitterId) {
+    const result = await reviewsRepository.getReviewsByPetSitterId(petSitterId)
+    return result;
   }
 
-  async deleteReview() {
-    console.log("deleteReview in Service");
-    reviewsRepository.deleteReview()
+  async deleteReview(userId, reviewId, petSitterId) {
+    const result = await reviewsRepository.deleteReview(userId, reviewId, petSitterId)
+    return result;
   }
 
-  async patchReview() {
-    console.log("patchReview in Service");
-    reviewsRepository.patchReview()
+  async patchReview(userId, petSitterId, reviewId, comment, rate) {
+    return reviewsRepository.patchReview(userId, petSitterId, reviewId, comment, rate)
   }
 }

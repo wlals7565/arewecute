@@ -10,10 +10,10 @@ const reviewsController = new ReviewsController();
 
 reviewsRouter.get("/:petSitterId", reviewsController.getReviewsByPetSitterId);
 
-reviewsRouter.post("/", authMiddleware, reviewsController.postReview);
+reviewsRouter.post("/:petSitterId", authMiddleware, reviewsController.postReview);
 
-reviewsRouter.patch("/:reviewID", authMiddleware, reviewsController.patchReview);
+reviewsRouter.patch("/:petSitterId/:reviewId", authMiddleware, reviewsController.patchReview);
 
-reviewsRouter.delete("/:reviewID", authMiddleware, reviewsController.deleteReview);
+reviewsRouter.delete("/:petSitterId/:reviewId", authMiddleware, reviewsController.deleteReview);
 
 export default reviewsRouter;
