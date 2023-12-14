@@ -7,7 +7,7 @@ export class UsersController {
   //유저를 찾아서 뭘 하나요?
   findUsersById = async (req, res, next) => {
     try {
-      const id = req.user;
+      const id = res.locals.userId;
 
       // 서비스 계층에 구현된 findUsersById 로직을 실행합니다.
       const user = await this.usersService.findUsersById(id);
@@ -17,7 +17,7 @@ export class UsersController {
       next(err);
     }
   };
-  
+
   //실행되는거 확인
   createUser = async (req, res, next) => {
     try {

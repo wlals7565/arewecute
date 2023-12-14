@@ -1,21 +1,46 @@
 import db from "../../models/index.cjs";
 const { reviews } = db;
 
-//a().b() 
+//a().b()
 export default class ReviewsRepository {
-  async postReview() {
-    console.log("postReview in Repository");
+  async postReview(userId, petSitterId, comment, rate) {
+    try {
+      const result = await reviews.create({
+        userId,
+        petSitterId,
+        comment,
+        rate
+      });
+      return result;
+    } catch (error) {
+      next(error);
+    }
   }
 
-  async getReviewsByPetSitterId() {
-    console.log("getReviewsByPetSitterId in Repository");
+  async getReviewsByPetSitterId(petSitterId) {
+    try {
+      const result = await reviews.findAll({ where: { petSitterId } });
+      return result;
+    } catch (error) {
+      next(error);
+    }
   }
 
-  async deleteReview() {
-    console.log("deleteReview in Repository");
+  async deleteReview(userId, reviewId, petSitterId) {
+    try {
+      const result = await reviews.destroy({ where: { id: reviewId, petSitterId, userId } });
+      return result;
+    } catch (error) {
+      next(error);
+    }
   }
 
-  async patchReview() {
-    console.log("patchReview in Repository");
+  async patchReview(userId, petSitterId, reviewId, comment, rate) {
+    try {
+      const result = await reviews.update({ comment, rate }, { where: { id: reviewId, petSitterId, userId } });
+      return result;
+    } catch (error) {
+      next(error);
+    }
   }
 }
