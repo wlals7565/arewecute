@@ -47,7 +47,7 @@ app.use(
 app.use(cookieParser());
 app.use(LogMiddleware);
 app.use(express.json());
-app.use("/api", router);
+app.use("/api", router); // yw 1번
 
 app.use(ErrorHandlingMiddleware);
 

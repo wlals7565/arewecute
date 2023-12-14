@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.use("/reservation", reservationsRouter);
 
-router.use("/users/", usersRouter);
+router.use("/users/", usersRouter);//yw 2번
 
 router.use("/auth", authRouter);
 
