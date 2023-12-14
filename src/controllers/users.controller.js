@@ -4,6 +4,7 @@ import validator from "validator";
 export class UsersController {
   usersService = new UsersService();
 
+  //유저를 찾아서 뭘 하나요?
   findUsersById = async (req, res, next) => {
     try {
       const id = req.user;
@@ -16,7 +17,8 @@ export class UsersController {
       next(err);
     }
   };
-
+  
+  //실행되는거 확인
   createUser = async (req, res, next) => {
     try {
       const { email, name, password, confirmPassword, region } = req.body;
@@ -28,12 +30,13 @@ export class UsersController {
       // 서비스 계층에 구현된 createUser 로직을 실행합니다.
       const createUser = await this.usersService.createUser(email, name, password, region);
 
-      return res.status(201).json({ data: createUser });
+      return res.status(201).json(createUser);
     } catch (err) {
       next(err);
     }
   };
 
+  //유저정보 수정
   updateUser = async (req, res, next) => {
     try {
       const id = req.user;
@@ -49,6 +52,7 @@ export class UsersController {
     }
   };
 
+  //회원탈퇴
   deleteUser = async (req, res, next) => {
     try {
       const { password } = req.body;

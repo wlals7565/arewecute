@@ -2,7 +2,6 @@ import { AuthService } from "../services/auth.service.js";
 
 export class AuthController {
   authService = new AuthService();
-
   login = async (req, res, next) => {
     try {
       // 서비스 계층에 구현된 findAllProducts 로직을 실행합니다.
