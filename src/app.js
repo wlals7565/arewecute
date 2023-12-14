@@ -3,10 +3,15 @@ import router from "./routes/index.js";
 import cookieParser from "cookie-parser";
 import LogMiddleware from "./middlewares/log.middleware.js";
 import ErrorHandlingMiddleware from "./middlewares/error-handling.middleware.js";
+import cors from "cors";
 
 const app = express();
 const port = 3000;
-
+app.use(
+  cors({
+    origin: "*" // 모든 출처 허용 옵션. true 를 써도 된다.
+  })
+);
 app.use(cookieParser());
 app.use(LogMiddleware);
 app.use(express.json());
