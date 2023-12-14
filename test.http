@@ -9,7 +9,8 @@ Content-Type: application/json
   "email" : "test@example.com",
   "name" : "test",
   "password" : "1234",
-  "confirmPassword" : "1234"
+  "confirmPassword" : "1234",
+  "region": "독도"
 }
 
 ### 로그인
@@ -26,24 +27,27 @@ POST {{host}}/api/auth/logout
 Content-Type: application/json
 
 ### 내 정보 조회
-get {{host}}/api/users
+get {{host}}/api/auth/mypage
 Content-Type: application/json
+
 
 ### 내 정보 수정
-PUT {{host}}/api/users
+PUT {{host}}/api/auth/mypage
 Content-Type: application/json
 
-{
-  "name" : "test2",
+{ 
+  "name" : "test",
   "password" : "1234",
-  "confirmPassword" : "1234"
+  "confirmPassword" : "1234",
+  "region": "울릉도"
 }
 
 ### 내 정보 삭제
-DELETE {{host}}/api/users
+DELETE {{host}}/api/users/mypage
 Content-Type: application/json
 
 {
+  "email" : "test@example.com",
   "password" : "1234"
 }
 
