@@ -35,18 +35,11 @@ export class UsersService {
     // 비밀번호 hash
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // 저장소(Repository)에게 데이터를 요청합니다.
-    const createUser = await this.usersRepository.createUser(email, name, hashedPassword);
+    // 저장소(Repository)에게 데이터를 요청합니다. 여기 오류
+    const createUser = await this.usersRepository.createUser(email, name, hashedPassword, region);
 
     // 비즈니스 로직을 수행한 후 사용자에게 보여줄 데이터를 가공합니다.
-    return {
-      id: createUser.id,
-      name: createUser.name,
-      email: createUser.email,
-      region: createUser.region,
-      createdAt: createUser.createdAt,
-      updatedAt: createUser.updatedAt
-    };
+    return createUser;
   };
 
   updateUser = async (id, name, password) => {

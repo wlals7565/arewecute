@@ -3,11 +3,11 @@ import { Sequelize } from "sequelize";
 const { reservations } = db;
 import { ReservationsService } from "../services/reservations.service.js";
 
+
 export class ReservationsController {
   constructor() {
     this.reservationService = new ReservationsService();
   }
-
   createOne = async (req, res, next) => {
     try {
       if (!req.body.petSitterId || !req.body.animal || !req.body.company || !req.body.date || !req.body.intro) {

@@ -25,17 +25,19 @@ export class UsersRepository {
     return Users;
   };
 
-  createUser = async (email, name, hashedPassword) => {
+  createUser = async (email, name, hashedPassword, region) => {
     // 회원가입 create 메서드를 사용해 데이터를 요청
-    const createdUser = users.create({
-      data: {
-        email,
-        name,
-        password: hashedPassword,
-        region
-      }
+    const createdUser = await users.create({
+      email,
+      name,
+      password: hashedPassword,
+      region
     });
-    return createdUser;
+    return {
+      id: createdUser.id,
+      name: createdUser.name,
+      email: createdUser.email,
+      region: createdUser.region,};
   };
 
   updateUser = async (id, name, hashedPassword) => {

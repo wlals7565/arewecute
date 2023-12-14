@@ -11,7 +11,7 @@ function initModels(sequelize) {
   var reservations = _reservations(sequelize, DataTypes);
   var reviews = _reviews(sequelize, DataTypes);
   var users = _users(sequelize, DataTypes);
-
+  //#TODO 
   reservations.belongsTo(pet_sitters, { as: "petSitter", foreignKey: "petSitterId" });
   pet_sitters.hasMany(reservations, { as: "reservations", foreignKey: "petSitterId" });
   reviews.belongsTo(pet_sitters, { as: "petSitter", foreignKey: "petSitterId" });
