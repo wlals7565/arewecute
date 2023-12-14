@@ -27,8 +27,9 @@ POST {{host}}/api/auth/logout
 Content-Type: application/json
 
 ### 내 정보 조회
-get {{host}}/api/auth/mypage
-Content-Type: application/json
+get {{host}}/api/users
+Content-Type: application/json 
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNzAyNTQyNjQ0LCJleHAiOjE3MDI1ODU4NDR9.-t6RtgFD-QsWc9WGwbz6YBRY3WFL5NutRn6oW5zKX7Y
 
 
 ### 내 정보 수정

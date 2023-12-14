@@ -8,6 +8,7 @@ export class UsersController {
   findUsersById = async (req, res, next) => {
     try {
       const id = res.locals.userId;
+      console.log(id, "************************************");
 
       // 서비스 계층에 구현된 findUsersById 로직을 실행합니다.
       const user = await this.usersService.findUsersById(id);

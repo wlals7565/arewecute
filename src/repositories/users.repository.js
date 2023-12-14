@@ -10,7 +10,7 @@ export class UsersRepository {
   findUsersById = async (id) => {
     // 아이디 조회 Users 모델의 findOne 메서드를 사용해 데이터를 요청
     const Users = await users.findOne({
-      where: { id: +id }
+      where: { id: id }
     });
 
     return Users;
@@ -37,7 +37,8 @@ export class UsersRepository {
       id: createdUser.id,
       name: createdUser.name,
       email: createdUser.email,
-      region: createdUser.region,};
+      region: createdUser.region
+    };
   };
 
   updateUser = async (id, name, hashedPassword) => {
