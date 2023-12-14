@@ -21,7 +21,7 @@ const authMiddleware = async (req, res, next) => {
     // 유효성검사
     const verifiedAccessToken = verifyAccessToken(accessToken, accessTokenSecretKey);
     if (verifiedAccessToken) {
-      req.user = verifiedAccessToken.id;
+      res.locals.user = verifiedAccessToken.id;
       next();
     } else throw new Error("NotExistToken");
   } catch (err) {
