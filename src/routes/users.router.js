@@ -8,15 +8,15 @@ const router = express.Router();
 const usersController = new UsersController();
 
 /** 내 정보 상세 조회 API **/
-router.get("/", authMiddleware ,usersController.findUsersById);
+router.get("/", authMiddleware, usersController.findUsersById);
 
 /** 내 정보 작성 API **/
 router.post("/", usersController.createUser);
 
 /** 내 정보 수정 API **/
-router.put("/", usersController.updateUser);
+router.put("/", authMiddleware, usersController.updateUser);
 
 /** 내 정보 삭제 API **/
-router.delete("/", usersController.deleteUser);
+router.delete("/", authMiddleware, usersController.deleteUser);
 
 export default router;
