@@ -63,3 +63,15 @@ Content-Type: application/json
   "date" : "2023-12-14T16:25:14.389Z",
   "intro" : "히히히"
 }
+
+### 펫시터조회
+get {{host}}/api/petSitter
+Content-Type: application/json
+
+### 펫시터조회 byId
+get {{host}}/api/petSitter/id/1
+Content-Type: application/json
+
+### 펫시터검색
+get {{host}}/api/petSitter/search?career=10&animal=dog
+Content-Type: application/json
