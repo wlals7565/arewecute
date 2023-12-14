@@ -25,9 +25,9 @@ export class PetSittersService {
     });
   };
 
-  findPetSitterById = async (sitterId) => {
+  findPetSitterById = async (petSitterId) => {
     // 저장소(Repository)에게 특정 게시글 하나를 요청합니다.
-    const petSitter = await this.petSittersRepository.findPetSitterById(sitterId);
+    const petSitter = await this.petSittersRepository.findPetSitterById(petSitterId);
     if (!petSitter) throw new Error("NoPetSitter");
 
     return {

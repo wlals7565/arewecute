@@ -14,10 +14,10 @@ export class PetSittersController {
 
   findPetSitterById = async (req, res, next) => {
     try {
-      const { sitterId } = req.params;
+      const { petSitterId } = req.params;
 
       // 서비스 계층에 구현된 findProductById 로직을 실행합니다.
-      const petSitter = await this.petSittersService.findPetSitterById(sitterId);
+      const petSitter = await this.petSittersService.findPetSitterById(petSitterId);
 
       return res.status(200).json({ data: petSitter });
     } catch (err) {

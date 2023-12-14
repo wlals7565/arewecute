@@ -11,7 +11,7 @@
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
-    <script type="module" src="../js/main.js"></script>
+    <script type="module" src="../js/pet-sitter.js"></script>
   </head>
   <body>
     <!-- Header -->
@@ -59,106 +59,32 @@
     
     <!-- 예약 전체보기 -->
     <div class="wrapAllPetSitter">
-
-    <div class="container my-4">
-      <div class="d-flex flex-wrap justify-content-center py-3 border">
-        <a href="/" class="d-flex align-items-center m-4 me-md-auto link-body-emphasis text-decoration-none">
-          <img class="bi m-2 mx-5" src="../contents/dog.png" width="150" alt="dog" />
-          <div class="fs-4">
-            <P class="h2"><strong>정창일 </strong><strong class="h3">sitter</strong></P>
-            <p class="mt-2">comment : <strong class="h5"><strong>강형욱보다 잘할걸요?</strong></strong></p> 
-          </div>
-        </a>
-        <a href="/" class="d-flex align-items-center m-4 me-md-auto link-body-emphasis text-decoration-none">
+      <div class="container my-4">
+        <div class="d-flex flex-wrap justify-content-center py-3 border">
+          <a href="/" class="d-flex align-items-center m-4 me-md-auto link-body-emphasis text-decoration-none">
+            <img class="bi m-2 mx-5" src="../contents/${petSitter.animal}.png" width="150" alt="dog" />
+            <div class="fs-4">
+              <P class="h2"><strong>${petSitter.name} </strong><strong class="h3">sitter</strong></P>
+              <p class="mt-2">comment : <strong class="h5"><strong>${petSitter.comment}</strong></strong></p> 
+            </div>
+          </a>
+          <a href="/" class="d-flex align-items-center m-4 me-md-auto link-body-emphasis text-decoration-none">
+            <div href="/" class="m-4 align-self-center me-auto text-decoration-none">
+                <P class="h4">Career<strong class="h3"><strong> ${petSitter.career}</strong>  month</strong></P>
+                <P class="h4">Animal<strong class="h3"><strong> ${petSitter.animal}</strong></strong></P>
+                <P class="h4">Grades<strong class="h3"><strong> 5.0</strong></strong></P>
+              </div>
+            </div>
+          </a>
+          <a href="/" class="d-flex align-items-center m-4 me-md-auto link-body-emphasis text-decoration-none">
           <div href="/" class="m-4 align-self-center me-auto text-decoration-none">
-            <div class="fs-3">
-              <P class="h4">Career<strong class="h3"><strong> 10</strong>  month</strong></P>
-              <P class="h4">Animal<strong class="h3"><strong> Dog</strong></strong></P>
-              <P class="h4">Grades<strong class="h3"><strong> 5.0</strong></strong></P>
+            <div class="fs-3 text-center">
+              <P class="h4 text-black"><strong>예약하기</strong></P>
             </div>
           </div>
-        </a>
-        <a href="/" class="d-flex align-items-center m-4 me-md-auto link-body-emphasis text-decoration-none">
-        <div href="/" class="m-4 align-self-center me-auto text-decoration-none">
-          <div class="fs-3 text-center">
-            <P class="h4 text-black"><strong>예약하기</strong></P>
-          </div>
-        </div>
-        </a>
-      </div>
-    </div>
-
-    <div class="container my-4">
-      <div class="d-flex flex-wrap justify-content-center py-3 border">
-        <a href="/" class="d-flex align-items-center m-4 me-md-auto link-body-emphasis text-decoration-none">
-          <img class="bi m-2 mx-5" src="../contents/cat.png" width="150" alt="dog" />
-          <div class="fs-4">
-            <P class="h2"><strong>김영우 </strong><strong class="h3">sitter</strong></P>
-            <p class="mt-2">comment : <strong class="h5"><strong>고양이 별로 안좋아함</strong></strong></p> 
-          </div>
-        </a>
-        <div href="/" class="m-4 align-self-center me-auto text-decoration-none">
-          <div class="fs-3">
-            <P class="h4">Career<strong class="h3"><strong> 3</strong>  month</strong></P>
-            <P class="h4">Animal<strong class="h3"><strong> Cat</strong></strong></P>
-            <P class="h4">Grades<strong class="h3"><strong> 4.0</strong></strong></P>
-          </div>
-        </div>
-        <div href="/" class="m-4 align-self-center me-auto text-decoration-none">
-          <div class="fs-3 text-center">
-            <P class="h4 text-black"><strong>예약하기</strong></P>
-          </div>
+          </a>
         </div>
       </div>
-    </div>
-
-    <div class="container my-4">
-      <div class="d-flex flex-wrap justify-content-center py-3 border">
-        <a href="/" class="d-flex align-items-center m-4 me-md-auto link-body-emphasis text-decoration-none">
-          <img class="bi m-2 mx-5" src="../contents/parrot.png" width="150" alt="dog" />
-          <div class="fs-4">
-            <P class="h2"><strong>권유진 </strong><strong class="h3">sitter</strong></P>
-            <p class="mt-2">comment : <strong class="h5"><strong>앵무새랑 말싸움 잘함</strong></strong></p> 
-          </div>
-        </a>
-        <div href="/" class="m-4 align-self-center me-auto text-decoration-none">
-          <div class="fs-3">
-            <P class="h4">Career<strong class="h3"><strong> 10</strong>  month</strong></P>
-            <P class="h4">Animal<strong class="h3"><strong> Others</strong></strong></P>
-            <P class="h4">Grades<strong class="h3"><strong> 4.5</strong></strong></P>
-          </div>
-        </div>
-        <div href="/" class="m-4 align-self-center me-auto text-decoration-none">
-          <div class="fs-3 text-center">
-            <P class="h4 text-black"><strong>예약하기</strong></P>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container my-4">
-      <div class="d-flex flex-wrap justify-content-center py-3 border">
-        <a href="/" class="d-flex align-items-center m-4 me-md-auto link-body-emphasis text-decoration-none">
-          <img class="bi m-2 mx-5" src="../contents/lizard.png" width="150" alt="dog" />
-          <div class="fs-4">
-            <P class="h2"><strong>이정훈 </strong><strong class="h3">sitter</strong></P>
-            <p class="mt-2">comment : <strong class="h5"><strong>그것이 파충류니까..</strong></strong></p> 
-          </div>
-        </a>
-        <div href="/" class="m-4 align-self-center me-auto text-decoration-none">
-          <div class="fs-3">
-            <P class="h4">Career<strong class="h3"><strong> 36</strong>  month</strong></P>
-            <P class="h4">Animal<strong class="h3"><strong> Others</strong></strong></P>
-            <P class="h4">Grades<strong class="h3"><strong> 4.8</strong></strong></P>
-          </div>
-        </div>
-        <div href="/" class="m-4 align-self-center me-auto text-decoration-none">
-          <div class="fs-3 text-center">
-            <P class="h4 text-black"><strong>예약하기</strong></P>
-          </div>
-        </div>
-      </div>
-    </div>
     </div> 
     <!-- Footer -->
     <div class="container">

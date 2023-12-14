@@ -1,12 +1,22 @@
-export const generatePetSitterCards = async (petSitters) => {
-  const cardList = document.querySelector(".wrapAllPetSitter");
+const cardList = document.querySelector(".wrapPetSitter");
+// URL에서 쿼리 문자열을 가져옵니다
+let queryString = window.location.search;
+// URLSearchParams 객체를 사용하여 쿼리 문자열을 파싱합니다
+let searchParams = new URLSearchParams(queryString);
+// detail_id 매개변수의 값을 가져옵니다
+let petSitterId = parseInt(searchParams.get("petSitterId"));
+console.log("check" + petSitterId);
+const petSitterData = await fetchPetSitters(petSitterId);
+console.log(petSitterData);
+
+export const generatePetSitterCards = async (petSitter) => {
   // petSitters.sort((a, b) => b.vote_count - a.vote_count);
-  cardList.innerHTML = petSitters
+  cardList.innerHTML = petSitter
     .map(
       (petSitter) => `
       <div class="container my-4">
       <div class="d-flex flex-wrap justify-content-center py-3 border">
-        <a href="/views/html/pet-sitter-by-id.html?petSitterId=${petSitter.id}" class="d-flex align-items-center m-4 me-md-auto link-body-emphasis text-decoration-none">
+        <a href="/" class="d-flex align-items-center m-4 me-md-auto link-body-emphasis text-decoration-none">
           <img class="bi m-2 mx-5" src="../contents/${petSitter.animal}.png" width="150" alt="dog" />
           <div class="fs-4">
             <P class="h2"><strong>${petSitter.name} </strong><strong class="h3">sitter</strong></P>
@@ -32,14 +42,14 @@ export const generatePetSitterCards = async (petSitters) => {
     .join("");
 };
 
-async function fetchPetSitters() {
-  const response = await fetch("http://localhost:3000/api/petSitter");
+async function fetchPetSitters(petSitterId) {
+  const response = await fetch("http://localhost:3000/api/petSitter/id/" + `${petSitterId}`);
   const responseData = await response.json();
   const cards = responseData.data;
 
   return cards;
 }
 
-export const petSitters = await fetchPetSitters();
+export const petSitter = await fetchPetSitters();
 
-generatePetSitterCards(petSitters);
+generatePetSitterCards(petSitter);

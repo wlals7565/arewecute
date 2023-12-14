@@ -1,2 +1,1 @@
-import { generatePetSitterCards } from "./pet-sitter.js";
-generatePetSitterCards();
+import { generatePetSitterCards } from "./pet-sitter.j";

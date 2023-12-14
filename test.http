@@ -60,13 +60,13 @@ Content-Type: application/json
 }
 
 ### 펫시터조회
-get {{host}}/api/pet-sitter
+get {{host}}/api/petSitter
 Content-Type: application/json
 
 ### 펫시터조회 byId
-get {{host}}/api/pet-sitter/1
+get {{host}}/api/petSitter/id/1
 Content-Type: application/json
 
 ### 펫시터검색
-get {{host}}/api/pet-sitter/search?career=10&animal=dog
+get {{host}}/api/petSitter/search?career=10&animal=dog
 Content-Type: application/json

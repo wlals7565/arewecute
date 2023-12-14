@@ -7,7 +7,7 @@ const petSittersController = new PetSittersController();
 /** 펫 시터 조회 API **/
 router.get("/", petSittersController.findAllPetSitters);
 
-router.get("/id/:sitterId/", petSittersController.findPetSitterById);
+router.get("/id/:petSitterId/", petSittersController.findPetSitterById);
 
 router.get("/search", petSittersController.findPetSitterBySearch);
 

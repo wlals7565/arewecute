@@ -10,10 +10,10 @@ export class PetSittersRepository {
   };
 
   /** 개별 시터조회 */
-  findPetSitterById = async (sitterId) => {
+  findPetSitterById = async (petSitterId) => {
     // ORM인 Sequelize에서 pet_sitters 모델의 findOne 메서드를 사용해 데이터를 요청
     const petSitter = await pet_sitters.findOne({
-      where: { id: sitterId }
+      where: { id: petSitterId }
     });
 
     return petSitter;

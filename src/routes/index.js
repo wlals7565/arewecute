@@ -13,6 +13,6 @@ router.use("/users/", usersRouter);
 router.use("/auth", authRouter);
 
 router.use("/reviews", reviewsRouter);
-router.use("/pet-sitter", petSitterRouter);
+router.use("/petSitter", petSitterRouter);
 
 export default router;
