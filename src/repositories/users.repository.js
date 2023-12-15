@@ -1,7 +1,7 @@
 import db from "../../models/index.cjs";
 const { users } = db;
 
-export class UsersRepository {
+export class UsersRepository { //yw 5번
   constructor(users) {
     // 생성자에서 전달받은 클라이언트의 의존성을 주입합니다.
     this.users = users;
@@ -41,21 +41,20 @@ export class UsersRepository {
     };
   };
 
-  updateUser = async (id, name, hashedPassword) => {
+  updateUser = async (id, name, hashedPassword, region) => {
     // 내 정보수정 update 메서드를 사용해 데이터를 수정
     const updateUser = await users.update({
+      name,
+      password: hashedPassword,
+      region
+    }, {
       where: {
         id: +id
-      },
-      data: {
-        name,
-        password: hashedPassword,
-        region
       }
     });
-
     return updateUser;
   };
+
 
   deleteUser = async (id) => {
     //회원탈퇴 destroy 메서드 이용

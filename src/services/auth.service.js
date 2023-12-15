@@ -15,8 +15,8 @@ const comparePassword = async (password, hash) => {
   return false;
 };
 // A가 B를 가지고 B는 C를 가진다. 그럼 A는 BC를 다 가지는데 그럼 계층화를 왜 하냐 A가 다 할 수 있는데 godclass
-export class AuthService {
-  authRepository = new UsersRepository();
+export class AuthService { 
+  authRepository = new UsersRepository(); //yw 5번
 
   login = async (email, password) => {
     // 저장소(Repository)에게 특정 유저정보 하나를 요청합니다.

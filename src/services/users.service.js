@@ -35,15 +35,15 @@ export class UsersService {
     // 비밀번호 hash
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // 저장소(Repository)에게 데이터를 요청합니다. 여기 오류
+    // 저장소(Repository)에게 데이터를 요청합니다. 여기 오류***** 이건 뭘까요ㅠ
     const createUser = await this.usersRepository.createUser(email, name, hashedPassword, region);
 
     // 비즈니스 로직을 수행한 후 사용자에게 보여줄 데이터를 가공합니다.
     return createUser;
   };
 
-  updateUser = async (id, name, password) => {
-    // 저장소(Repository)에게 특정 게시글 하나를 요청합니다.
+  updateUser = async (id, name, password, region) => {
+    // 저장소(Repository)에 유저 정보 하나 가져오라 시킴
     const user = await this.usersRepository.findUsersById(id);
     if (!user) throw new Error("NoExistedUser");
 
@@ -51,23 +51,24 @@ export class UsersService {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // 저장소(Repository)에게 데이터 수정을 요청합니다.
-    await this.usersRepository.updateUser(id, name, hashedPassword);
+    await this.usersRepository.updateUser(id, name, hashedPassword, region);
 
     // 변경된 데이터를 조회합니다.
-    const updateUser = await this.usersRepository.findUsersById(id, name, password);
+    const updatedUser = await this.usersRepository.findUsersById(id);
 
     return {
-      id: updateUser.id,
-      name: updateUser.name,
-      email: updateUser.email,
-      region: updateUser.region,
-      createdAt: updateUser.createdAt,
-      updatedAt: updateUser.updatedAt
+      id: updatedUser.id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      region: updatedUser.region,
+      createdAt: updatedUser.createdAt,
+      updatedAt: updatedUser.updatedAt
     };
   };
 
+
   deleteUser = async (id, password) => {
-    // 저장소(Repository)에게 특정 게시글 하나를 요청합니다.
+    // 저장소(Repository)에게 유저 정보 하나 가져오라 시킴
     const user = await this.usersRepository.findUsersById(id);
     if (!user) throw new Error("NoExistedUser");
 
