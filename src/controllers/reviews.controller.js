@@ -14,7 +14,7 @@ export default class ReviewsController {
     if (!userId || !petSitterId || !comment || !rate) {
       throw new Error("InvalidParamsError");
     } else {
-      const result = await reviewsService.postReview(userId, petSitterId, comment, rate);
+      const result = await reviewsService.postReview(userId, petSitterId, comment, rate, next);
       res.json({
         code: 200,
         message: "성공적으로 리뷰를 작성했습니다."
@@ -28,7 +28,7 @@ export default class ReviewsController {
     if (!petSitterId) {
       throw new Error("InvalidParamsError");
     } else {
-      const result = await reviewsService.getReviewsByPetSitterId(petSitterId);
+      const result = await reviewsService.getReviewsByPetSitterId(petSitterId, next);
       res.json({ code: 200, message: "성공적으로 리뷰들을 불러왔습니다.", result });
     }
   }
@@ -41,7 +41,7 @@ export default class ReviewsController {
     if (!userId && !petSitterId) {
       throw new Error("InvalidParamsError");
     } else {
-      const result = await reviewsService.deleteReview(userId, reviewId, petSitterId);
+      const result = await reviewsService.deleteReview(userId, reviewId, petSitterId, next);
       if (result) {
         res.json({ code: 200, message: "성공적으로 삭제했습니다." });
       } else {
@@ -58,8 +58,9 @@ export default class ReviewsController {
     if (!userId || !petSitterId || (!comment && !rate) || !reviewId) {
       throw new Error("InvalidParamsError");
     } else {
-      const result = await reviewsService.patchReview(userId, petSitterId, reviewId, comment, rate);
+      const result = await reviewsService.patchReview(userId, petSitterId, reviewId, comment, rate, next);
       if (result) {
+        console.log(result)
         res.json({ code: 200, message: "성공적으로 리뷰를 수정하였습니다."});
       }
       else {
