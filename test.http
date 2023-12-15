@@ -7,7 +7,7 @@ Content-Type: application/json
 
 {
   "email" : "test@example.com",
-  "name" : "test",
+  "name" : "김장훈",
   "password" : "1234",
   "confirmPassword" : "1234",
   "region": "독도"
@@ -27,24 +27,24 @@ POST {{host}}/api/auth/logout
 Content-Type: application/json
 
 ### 내 정보 조회
-get {{host}}/api/users
+get {{host}}/api/users/me
 Content-Type: application/json 
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNzAyNTQyNjQ0LCJleHAiOjE3MDI1ODU4NDR9.-t6RtgFD-QsWc9WGwbz6YBRY3WFL5NutRn6oW5zKX7Y
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImlhdCI6MTcwMjYyNTU5NiwiZXhwIjoxNzAyNjY4Nzk2fQ.KKaLAD_lNoCc417taquuYJMY7OVl_kH8Bs8carfH4Ms
 
 
 ### 내 정보 수정
-PUT {{host}}/api/auth/mypage
+PUT {{host}}/api/users/me
 Content-Type: application/json
 
 { 
-  "name" : "test",
+  "name" : "숲튽훈",
   "password" : "1234",
   "confirmPassword" : "1234",
   "region": "울릉도"
 }
 
 ### 내 정보 삭제
-DELETE {{host}}/api/users/mypage
+DELETE {{host}}/api/users/me
 Content-Type: application/json
 
 {
