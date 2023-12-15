@@ -1,6 +1,6 @@
 import express from "express";
 import { PetSittersController } from "../controllers/pet-sitters.controller.js";
-const router = express.Router();
+const   router = express.Router();
 
 const petSittersController = new PetSittersController();
 
