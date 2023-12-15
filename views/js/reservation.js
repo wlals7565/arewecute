@@ -1,8 +1,17 @@
+const loginDiv = document.getElementById("loginDiv");
+
 const reservationButton = document.getElementById("reservationButton");
+
 let petSitterId = "1";
+
 document.addEventListener("click", function (event) {
   let clickedElementId = event.target.className;
-  if (String(clickedElementId).includes("petSitterId")) {
+  let isNotLoggedIn = (loginDiv.style.display = "block");
+  let modalClicked = String(clickedElementId).includes("petSitterId");
+  if (isNotLoggedIn && modalClicked) {
+    alert(`로그인이 필요한 서비스입니다.`);
+    window.location.href = "/html/index-pet-sitter.html";
+  } else if (modalClicked) {
     petSitterId = Number(String(clickedElementId).split(":")[1]);
   }
 });

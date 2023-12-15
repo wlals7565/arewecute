@@ -12,7 +12,10 @@ export class ReservationsRepository {
   readByIdWithUser = async ({ id }) => {
     const reservation = await reservations.findByPk(id, {
       include: [{ model: pet_sitters, as: "petSitter" }],
-      required: true
+      required: true,
+      where: {
+        status: "예약중"
+      }
     });
 
     return reservation;

@@ -13,6 +13,7 @@
     />
     <script type="module" src="/js/pet-sitter-by-id.js"></script>
     <script type="module" src="/js/logout.js"></script>
+    <script type="module" src="/js/reservation.js"></script>
   </head>
   <body>
     <!-- Header -->
@@ -26,11 +27,17 @@
           <li class="nav-item">
             <a href="/html/index-pet-sitter.html" class="nav-link px-2 link-body-emphasis"><strong>Home</strong></a>
           </li>
-          <li class="nav-item">
+          <li id="myPageDiv" class="nav-item">
             <a href="/html/mypage.html" class="nav-link px-2 link-body-emphasis"><strong>Mypage</strong></a>
           </li>
-          <li class="nav-item">
+          <li id="logoutDiv" class="nav-item">
             <a href="#" class="nav-link px-2 link-body-emphasis"><strong>Logout</strong></a>
+          </li>
+          <li id="loginDiv" class="nav-item">
+            <a href="#" class="nav-link px-2 link-body-emphasis" data-bs-toggle="modal" data-bs-target="#logInModal"><strong>Login</strong></a>
+          </li>
+          <li id="signupDiv" class="nav-item">
+            <a href="#" class="nav-link px-2 link-body-emphasis" data-bs-toggle="modal" data-bs-target="#signUpModal"><strong>SignUp</strong></a>
           </li>
         </ul>
       </header>

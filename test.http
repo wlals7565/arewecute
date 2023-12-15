@@ -39,10 +39,10 @@ PUT {{host}}/api/users/me
 Content-Type: application/json
 
 { 
-  "name" : "숲튽훈",
+  "name" : "정창일",
   "password" : "1234",
   "confirmPassword" : "1234",
-  "region": "울릉도"
+  "region": "너네집"
 }
 
 ### 내 정보 삭제
@@ -62,7 +62,7 @@ Content-Type: application/json
   "petSitterId" : "1",
   "animal" : "dog",
   "company" : "test1",
-  "date" : "2023-12-14",
+  "date" : "2023-12-17",
   "comment" : "히히히"
 }
 
@@ -82,8 +82,8 @@ Content-Type: application/json
 get {{host}}/api/reviews/1
 Content-Type: application/json
 
-### 펫시터리뷰조회
-get {{host}}/api/reservation/3
+### 예약조회
+get {{host}}/api/reservation/
 Content-Type: application/json
 
 ### 펫시터리뷰조회

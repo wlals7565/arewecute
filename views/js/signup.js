@@ -35,7 +35,7 @@ async function signup() {
       }
     })
     .catch((error) => {
-      console.error("회원가입 실패:", error);
+      console.error("서버오류:", error);
     });
 }
 

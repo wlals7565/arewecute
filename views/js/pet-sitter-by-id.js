@@ -1,3 +1,8 @@
+const loginDiv = document.getElementById("loginDiv");
+const signupDiv = document.getElementById("signupDiv");
+const myPageDiv = document.getElementById("myPageDiv");
+const logoutDiv = document.getElementById("logoutDiv");
+
 export const generatePetSitterCards = async (petSitterData, avgRate) => {
   const RoundedAvgRate = Math.round(avgRate * 10) / 10;
   cardList.innerHTML = petSitterData
@@ -20,7 +25,7 @@ export const generatePetSitterCards = async (petSitterData, avgRate) => {
         <div class="d-flex align-items-center m-4 me-md-auto link-body-emphasis text-decoration-none">
         <div class="m-2 align-self-center me-auto text-decoration-none" data-bs-toggle="modal" data-bs-target="#reservationModal">
           <div class="fs-3 text-center">
-            <p class="h4 text-black"><strong>예약하기</strong></p>
+            <p class="h4 text-black"><strong class="petSitterId:${petSitter.id}" data-bs-toggle="modal" data-bs-target="#reservationModal">예약하기</strong></p>
           </div>
         </div>
         </div>
@@ -76,6 +81,32 @@ export const petSitter = await fetchPetSitters(petSitterId);
 generatePetSitterCards(petSitterData, avgRate);
 generatePetSitterReviews(reviewsData);
 
+let isLoggedIn = false;
+
+if (document.cookie.includes("accessToken")) {
+  isLoggedIn = true;
+} else {
+  isLoggedIn = false;
+}
+
+// 로그인 상태에 따라 로그인 버튼의 표시 여부를 업데이트하는 함수
+function updateLoginButton() {
+  if (isLoggedIn) {
+    // 로그인 상태인 경우, 로그인 버튼을 숨깁니다.
+    loginDiv.style.display = "none";
+    signupDiv.style.display = "none";
+    myPageDiv.style.display = "block";
+    logoutDiv.style.display = "block";
+  } else {
+    // 로그인 상태가 아닌 경우, 로그인 버튼을 표시합니다.
+    loginDiv.style.display = "block";
+    signupDiv.style.display = "block";
+    myPageDiv.style.display = "none";
+    logoutDiv.style.display = "none";
+  }
+}
+
+updateLoginButton(isLoggedIn);
 // HTML에 같이 놓고 display block > CSS를 바꾼다.
 // body안에 z인덱스(오마이갓) z인덱스를 1을주는식으로
 // js 함수를 구현하는데
