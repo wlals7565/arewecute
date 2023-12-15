@@ -1,5 +1,5 @@
 import ReviewsService from "../services/reviews.service.js";
-import validator from "validator";
+
 
 const reviewsService = new ReviewsService();
 
@@ -67,5 +67,10 @@ export default class ReviewsController {
         res.json({ code: 404, message: "사용자님의 해당 리뷰를 찾을 수 없습니다." })
       }
     }
+  }
+  //리뷰인데 내 리뷰 펫시터 정보까지?
+  async getMyReview(req,res,next) {
+    const result =  await reviewsService.getMyReviews(res.locals.userId, next);
+    res.json(result);
   }
 }

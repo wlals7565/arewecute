@@ -7,6 +7,8 @@ const reviewsController = new ReviewsController();
 
 //reviewsRouter.get("/")
 
+reviewsRouter.get("/", authMiddleware, reviewsController.getMyReview);
+
 reviewsRouter.get("/:petSitterId", reviewsController.getReviewsByPetSitterId);
 
 reviewsRouter.post("/:petSitterId", authMiddleware, reviewsController.postReview);

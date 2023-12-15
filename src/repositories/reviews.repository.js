@@ -1,5 +1,5 @@
 import db from "../../models/index.cjs";
-const { reviews, users } = db;
+const { reviews, users, pet_sitters } = db;
 
 //a().b()
 export default class ReviewsRepository {
@@ -46,6 +46,19 @@ export default class ReviewsRepository {
       return result;
     } catch (error) {
       next(error);
+    }
+  }
+
+  async getMyReviews(id, next){
+    try {
+      const result = await reviews.findAll({
+        where: {userId: id},
+        include: [{model: pet_sitters, as: "petSitter"}],
+      });
+      console.log(result);
+      return result;
+    } catch(error){
+      next(error)
     }
   }
 }

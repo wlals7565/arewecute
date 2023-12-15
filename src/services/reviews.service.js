@@ -18,4 +18,8 @@ export default class reviewsService {
   async patchReview(userId, petSitterId, reviewId, comment, rate, next) {
     return reviewsRepository.patchReview(userId, petSitterId, reviewId, comment, rate, next)
   }
+
+  async getMyReviews(id, next){
+    return await reviewsRepository.getMyReviews(id, next);
+  }
 }
