@@ -17,6 +17,7 @@ export class PetSittersService {
     // 비즈니스 로직을 수행한 후 사용자에게 보여줄 데이터를 가공합니다.
     return petSitters.map((petSitters) => {
       return {
+        id: petSitters.id,
         name: petSitters.name,
         career: petSitters.career,
         comment: petSitters.comment,

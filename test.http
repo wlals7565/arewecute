@@ -6,11 +6,13 @@ POST {{host}}/api/users
 Content-Type: application/json
 
 {
+  "email" : "visitor17564@kakao.com",
+  "name" : "visitor",
   "email" : "test@example.com",
   "name" : "김장훈",
   "password" : "1234",
   "confirmPassword" : "1234",
-  "region": "독도"
+  "region": "우리집"
 }
 
 ### 로그인
@@ -18,7 +20,7 @@ POST {{host}}/api/auth/login
 Content-Type: application/json
 
 {
-  "email" : "test@example.com",
+  "email" : "visitor17564@kakao.com",
   "password" : "1234"
 }
 
@@ -37,10 +39,10 @@ PUT {{host}}/api/users/me
 Content-Type: application/json
 
 { 
-  "name" : "숲튽훈",
+  "name" : "정창일",
   "password" : "1234",
   "confirmPassword" : "1234",
-  "region": "울릉도"
+  "region": "너네집"
 }
 
 ### 내 정보 삭제
@@ -60,7 +62,7 @@ Content-Type: application/json
   "petSitterId" : "1",
   "animal" : "dog",
   "company" : "test1",
-  "date" : "2023-12-14",
+  "date" : "2023-12-17",
   "comment" : "히히히"
 }
 
@@ -74,4 +76,16 @@ Content-Type: application/json
 
 ### 펫시터검색
 get {{host}}/api/petSitter/search?career=10&animal=dog
+Content-Type: application/json
+
+### 펫시터리뷰조회
+get {{host}}/api/reviews/1
+Content-Type: application/json
+
+### 예약조회
+get {{host}}/api/reservation/
+Content-Type: application/json
+
+### 펫시터리뷰조회
+get {{host}}/api/reservation/3
 Content-Type: application/json

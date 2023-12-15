@@ -21,7 +21,6 @@ const swaggerOptions = {
   },
   apis: ["./routes/*.js"] // Swagger JSDoc 설정 파일 경로
 };
-
 // Swagger JSDoc 생성
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
@@ -36,7 +35,7 @@ app.use(cookieParser());
 app.use(LogMiddleware);
 app.use(express.json());
 app.use("/api", router); // yw 1번
-
+app.use(express.static("./views"));
 app.use(ErrorHandlingMiddleware);
 
 app.listen(port, () => {
