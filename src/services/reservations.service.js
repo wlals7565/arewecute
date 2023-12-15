@@ -14,13 +14,49 @@ export class ReservationsService {
   };
 
   readByIdWithUser = async ({ id }) => {
-    const reservation = await this.reservationsRepository.readByIdWithUser({ id });
+    const data = await this.reservationsRepository.readByIdWithUser({ id });
+
+    if (!data) {
+      throw new Error("NoReservation");
+    }
+
+    const reservation = {
+      id: data.id,
+      userId: data.userId,
+      petSitterId: data.petSitterId,
+      petSitterName: data.petSitter.name,
+      petSitterCareer: data.petSitter.career,
+      petSitterComment: data.petSitter.comment,
+      petSitterAnimal: data.petSitter.animal,
+      company: data.company,
+      comment: data.comment,
+      animal: data.animal,
+      status: data.status,
+      reservedAt: data.reservedAt,
+      createdAt: data.createdAt
+    };
 
     return reservation;
   };
 
   readByUser = async ({ userId }) => {
-    const data = await this.reservationsRepository.readByUser({ userId });
+    const resData = await this.reservationsRepository.readByUser({ userId });
+
+    const data = resData.map((data) => ({
+      id: data.id,
+      userId: data.userId,
+      petSitterId: data.petSitterId,
+      petSitterName: data.petSitter.name,
+      petSitterCareer: data.petSitter.career,
+      petSitterComment: data.petSitter.comment,
+      petSitterAnimal: data.petSitter.animal,
+      company: data.company,
+      comment: data.comment,
+      animal: data.animal,
+      status: data.status,
+      reservedAt: data.reservedAt,
+      createdAt: data.createdAt
+    }));
 
     return data;
   };
