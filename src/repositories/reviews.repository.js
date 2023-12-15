@@ -19,12 +19,9 @@ export default class ReviewsRepository {
 
   async getReviewsByPetSitterId(petSitterId, next) {
     try {
-      console.log("*******************************************************************************")
-      console.log(users.associations);
-      console.log(reviews.associations);
       const result = await reviews.findAll({
         where: { petSitterId },
-        include: [{ model: users, as: "user" }],
+        include: [{ model: users, as: "user", attributes: ["name"] }],
       });
       
       return result;

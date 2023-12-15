@@ -6,21 +6,11 @@ import LogMiddleware from "./middlewares/log.middleware.js";
 import ErrorHandlingMiddleware from "./middlewares/error-handling.middleware.js";
 import path from "path";
 import cors from "cors";
-import db from "../models/index.cjs";
 import swaggerUi from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
 
-import { fileURLToPath } from "url";
-import { dirname } from "path";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const { sequelize } = db;
-
 const app = express();
 const port = 3000;
-
 const swaggerOptions = {
   definition: {
     openapi: "3.0.0",

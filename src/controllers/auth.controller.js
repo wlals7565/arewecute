@@ -1,11 +1,10 @@
 import { AuthService } from "../services/auth.service.js";
 
 export class AuthController {
-  authService = new AuthService();
-  //확인
+  authService = new AuthService(); // yw 4번
+  //확인 -> 이메일 틀리면 왜 http 500 으로 나올까여ㅠ
   login = async (req, res, next) => {
     try {
-      // 서비스 계층에 구현된 findAllProducts 로직을 실행합니다.
       const { email, password } = req.body;
       const users = await this.authService.login(email, password);
       res.cookie("accessToken", `Bearer ${users.accessToken}`);
