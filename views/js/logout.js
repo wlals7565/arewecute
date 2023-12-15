@@ -1,7 +1,9 @@
+const logoutButton = document.getElementById("logoutDiv");
+
 window.signout = signout;
 async function signout() {
   fetch("http://localhost:3000/api/auth/logout", {
-    method: "GET",
+    method: "POST",
     headers: {
       "Content-Type": "application/json"
     }
@@ -10,13 +12,17 @@ async function signout() {
     .then((result) => {
       if (result.message) {
         alert(`${result.message}`);
-        window.location.href = "/views/html/index-pet-sitter.html";
+        window.location.href = "/html/index-pet-sitter.html";
       } else {
         alert(`${result.errorMessage}`);
-        window.location.href = "/views/html/index-pet-sitter.html";
+        window.location.href = "/html/index-pet-sitter.html";
       }
     })
     .catch((error) => {
       console.error("서버에러:", error);
     });
 }
+
+logoutButton.addEventListener("click", () => {
+  signout();
+});

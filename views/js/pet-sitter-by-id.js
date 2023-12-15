@@ -16,13 +16,13 @@ export const generatePetSitterCards = async (petSitterData) => {
           <P class="h4">Animal<strong class="h3"><strong> ${petSitter.animal}</strong></strong></P>
           <P class="h4">Grades<strong class="h3"><strong> 5.0</strong></strong></P>
         </div>
-        <a href="/" class="d-flex align-items-center m-4 me-md-auto link-body-emphasis text-decoration-none">
-        <div href="/" class="m-2 align-self-center me-auto text-decoration-none">
+        <div class="d-flex align-items-center m-4 me-md-auto link-body-emphasis text-decoration-none">
+        <div class="m-2 align-self-center me-auto text-decoration-none" data-bs-toggle="modal" data-bs-target="#reservationModal">
           <div class="fs-3 text-center">
             <p class="h4 text-black"><strong>예약하기</strong></p>
           </div>
         </div>
-        </a>
+        </div>
         </div>
       </div>
     </div>`
@@ -36,7 +36,7 @@ export const generatePetSitterReviews = async (reviewsData) => {
       (review) => `
       <div class="container my-2">
         <div class="row border">
-          <div class="col-sm-7 mx-5 my-3 h5"><strong>${review.id} : </strong>${review.comment}</strong></div>
+          <div class="col-sm-7 mx-5 my-3 h5"><strong>${review.user.name} : </strong>${review.comment}</strong></div>
           <div class="col-sm m-3 h5"><strong>Rate : </strong>${review.rate}.0</strong></div>
         </div>
       </div>`

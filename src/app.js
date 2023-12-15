@@ -4,27 +4,23 @@ import router from "./routes/index.js";
 import cookieParser from "cookie-parser";
 import LogMiddleware from "./middlewares/log.middleware.js";
 import ErrorHandlingMiddleware from "./middlewares/error-handling.middleware.js";
+import path from "path";
 import cors from "cors";
 import db from "../models/index.cjs";
 import swaggerUi from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
+
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const { sequelize } = db;
 
 const app = express();
 const port = 3000;
 
-<<<<<<< HEAD
-=======
-sequelize
-  .sync({ force: false })
-  .then(() => {
-    console.log(`데이터베이스 연결 성공`);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-
->>>>>>> 81b9a12ffd7a568874693f270c687ea6b6623615
 const swaggerOptions = {
   definition: {
     openapi: "3.0.0",
@@ -36,6 +32,8 @@ const swaggerOptions = {
   },
   apis: ["./routes/*.js"] // Swagger JSDoc 설정 파일 경로
 };
+
+app.use(express.static(path.join(__dirname, "views")));
 
 // Swagger JSDoc 생성
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
@@ -51,7 +49,7 @@ app.use(cookieParser());
 app.use(LogMiddleware);
 app.use(express.json());
 app.use("/api", router); // yw 1번
-
+app.use(express.static("./views"));
 app.use(ErrorHandlingMiddleware);
 
 app.listen(port, () => {

@@ -4,39 +4,41 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>7ㅣ엽죠? 물기전까진</title>
-    <link rel="stylesheet" href="/views/css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
-    <script type="module" src="../js/pet-sitter.js"></script>
-    <script type="module" src="../js/login.js"></script>
+    <script type="module" src="/js/pet-sitter.js"></script>
+    <script type="module" src="/js/login.js"></script>
+    <script type="module" src="/js/logout.js"></script>
+    <script type="module" src="/js/signup.js"></script>
   </head>
   <body>
     <!-- Header -->
     <div id="1"></div>
     <div class="container">
       <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <a href="/html/index-pet-sitter.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
           <img class="bi me-2" src="../contents/icon.png" width="40" height="32" alt="icon" />
           <span class="fs-4"><strong>7ㅣ엽죠</strong></span>
         </a>
         <ul class="nav nav-pills">
           <li class="nav-item">
-            <a href="/views/html/index-pet-sitter.html" class="nav-link px-2 link-body-emphasis"><strong>Home</strong></a>
+            <a href="/html/index-pet-sitter.html" class="nav-link px-2 link-body-emphasis"><strong>Home</strong></a>
           </li>
-          <li class="nav-item">
-            <a href="/views/html/mypage.html" class="nav-link px-2 link-body-emphasis"><strong>Mypage</strong></a>
+          <li id="myPageDiv" class="nav-item">
+            <a href="/html/mypage.html" class="nav-link px-2 link-body-emphasis"><strong>Mypage</strong></a>
           </li>
-          <li class="nav-item">
+          <li id="logoutDiv" class="nav-item">
             <a href="#" class="nav-link px-2 link-body-emphasis"><strong>Logout</strong></a>
           </li>
           <li id="loginDiv" class="nav-item">
             <a href="#" class="nav-link px-2 link-body-emphasis" data-bs-toggle="modal" data-bs-target="#logInModal"><strong>Login</strong></a>
           </li>
-          <li class="nav-item">
+          <li id="signupDiv" class="nav-item">
             <a href="#" class="nav-link px-2 link-body-emphasis" data-bs-toggle="modal" data-bs-target="#signUpModal"><strong>SignUp</strong></a>
           </li>
         </ul>
@@ -105,35 +107,69 @@
           </div>
           <div class="m-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="email" class="form-control" id="signupInputEmail" aria-describedby="emailHelp">
           </div>
           <div class="m-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <input type="password" class="form-control" id="signupInputPassword">
           </div>
           <div class="m-3">
             <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword2">
+            <input type="password" class="form-control" id="signupInputConfirmPassword">
           </div>
           <div class="m-3">
             <label for="exampleUserName" class="form-label">Username</label>
-            <input type="email" class="form-control" id="exampleUserName" aria-describedby="nameHelp">
+            <input type="text" class="form-control" id="signupInputUsername" aria-describedby="nameHelp">
           </div>
           <div class="m-3">
             <label for="exampleRegion" class="form-label">Region</label>
-            <input type="email" class="form-control" id="exampleRegion" aria-describedby="regionHelp">
+            <input type="text" class="form-control" id="signupInputRegion" aria-describedby="regionHelp">
           </div>
           <div class="d-flex justify-content-between align-items-center">
             <div>
               <a href="#" class="btn btn-outline-dark m-3" role="button" data-bs-dismiss="modal">뒤로가기</a>
             </div>
             <div>
-              <button type="submit" class="btn btn-outline-dark m-3">가입하기</button>
+              <button type="submit" id="signupButton" class="btn btn-outline-dark m-3">가입하기</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- 예약 모달 -->
+    <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <form class="auth-wrapper">
+            <div class="text-center">
+              <h3 class="mb-3 font-weight-normal"><strong>예약하기</strong></h3>
+            </div>
+            <div class="m-3">
+              <label for="exampleUserName" class="form-label">Reservation Date</label>
+              <input type="date" class="form-control" id="exampleUserName" aria-describedby="nameHelp">
+            </div>
+            <div class="m-3">
+              <label for="exampleRegion" class="form-label">Your Pet</label>
+              <input type="text" class="form-control" id="exampleRegion" aria-describedby="regionHelp">
+            </div>
+            <div class="m-3">
+              <label for="exampleRegion" class="form-label">Comment</label>
+              <input type="text" class="form-control" id="exampleRegion" aria-describedby="regionHelp">
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <button type="submit" class="btn btn-outline-dark m-3">뒤로가기</button>
+              </div>
+              <div>
+                <button type="submit" id="reservationButton" class="btn btn-outline-dark m-3">예약하기</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
 
 
     <!-- Footer -->

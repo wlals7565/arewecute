@@ -6,11 +6,11 @@ POST {{host}}/api/users
 Content-Type: application/json
 
 {
-  "email" : "test@example.com",
-  "name" : "test",
+  "email" : "visitor17564@kakao.com",
+  "name" : "visitor",
   "password" : "1234",
   "confirmPassword" : "1234",
-  "region": "독도"
+  "region": "우리집"
 }
 
 ### 로그인
@@ -18,7 +18,7 @@ POST {{host}}/api/auth/login
 Content-Type: application/json
 
 {
-  "email" : "test@example.com",
+  "email" : "visitor17564@kakao.com",
   "password" : "1234"
 }
 
