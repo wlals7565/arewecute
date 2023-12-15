@@ -10,7 +10,10 @@ export class ReservationsRepository {
   };
 
   readByIdWithUser = async ({ id }) => {
-    const reservation = await reservations.findByPk(id, { include: pet_sitters, required: true });
+    const reservation = await reservations.findByPk(id, {
+      include: [{ model: pet_sitters, as: "petSitter" }],
+      required: true
+    });
 
     return reservation;
   };
@@ -19,7 +22,9 @@ export class ReservationsRepository {
     const data = await reservations.findAll({
       where: {
         userId
-      }
+      },
+      include: [{ model: pet_sitters, as: "petSitter" }],
+      required: true
     });
 
     return data;
