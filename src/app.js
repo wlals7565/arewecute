@@ -4,36 +4,53 @@ import router from "./routes/index.js";
 import cookieParser from "cookie-parser";
 import LogMiddleware from "./middlewares/log.middleware.js";
 import ErrorHandlingMiddleware from "./middlewares/error-handling.middleware.js";
-import db from '../models/index.cjs';
-import swaggerUi from 'swagger-ui-express';
-import swaggerJsdoc from 'swagger-jsdoc';
-const {sequelize} = db
+import cors from "cors";
+import db from "../models/index.cjs";
+import swaggerUi from "swagger-ui-express";
+import swaggerJsdoc from "swagger-jsdoc";
+const { sequelize } = db;
 
 const app = express();
 const port = 3000;
 
+<<<<<<< HEAD
+=======
+sequelize
+  .sync({ force: false })
+  .then(() => {
+    console.log(`데이터베이스 연결 성공`);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+>>>>>>> 81b9a12ffd7a568874693f270c687ea6b6623615
 const swaggerOptions = {
   definition: {
-    openapi: '3.0.0',
+    openapi: "3.0.0",
     info: {
-      title: 'PetSitter API',
-      version: '1.0.0',
-      description: 'API Documentation for the PetSitter API',
-    },
+      title: "PetSitter API",
+      version: "1.0.0",
+      description: "API Documentation for the PetSitter API"
+    }
   },
-  apis: ['./routes/*.js'], // Swagger JSDoc 설정 파일 경로
+  apis: ["./routes/*.js"] // Swagger JSDoc 설정 파일 경로
 };
 
 // Swagger JSDoc 생성
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
 // Swagger UI 설정
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use(
+  cors({
+    origin: "*" // 모든 출처 허용 옵션. true 를 써도 된다.
+  })
+);
 app.use(cookieParser());
 app.use(LogMiddleware);
 app.use(express.json());
-app.use("/api", router);
+app.use("/api", router); // yw 1번
 
 app.use(ErrorHandlingMiddleware);
 

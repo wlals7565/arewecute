@@ -22,7 +22,7 @@ export class UsersController {
   createUser = async (req, res, next) => {
     try {
       const { email, name, password, confirmPassword, region } = req.body;
-
+      console.log(req.body);
       if (!email || !password || !name) throw new Error("InvalidParamsError");
       if (!validator.isEmail(email)) throw new Error("NotEmail");
       if (!validator.equals(password, confirmPassword)) throw new Error("NotSamePasswords");
