@@ -20,7 +20,8 @@ export class PetSittersService {
         name: petSitters.name,
         career: petSitters.career,
         comment: petSitters.comment,
-        animal: petSitters.animal
+        animal: petSitters.animal,
+        averageRate: petSitters.averageRate
       };
     });
   };
