@@ -4,7 +4,6 @@ import router from "./routes/index.js";
 import cookieParser from "cookie-parser";
 import LogMiddleware from "./middlewares/log.middleware.js";
 import ErrorHandlingMiddleware from "./middlewares/error-handling.middleware.js";
-import path from "path";
 import cors from "cors";
 import swaggerUi from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
@@ -22,9 +21,6 @@ const swaggerOptions = {
   },
   apis: ["./routes/*.js"] // Swagger JSDoc 설정 파일 경로
 };
-
-app.use(express.static(path.join(__dirname, "views")));
-
 // Swagger JSDoc 생성
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
