@@ -39,7 +39,7 @@ export class UsersController {
   //유저정보 수정
   updateUser = async (req, res, next) => {
     try {
-      const id = req.user;
+      const id = res.locals.userId;
       const { name, password, confirmPassword, region } = req.body;
       if (!validator.equals(password, confirmPassword)) throw new Error("NotSamePasswords");
 
@@ -52,18 +52,24 @@ export class UsersController {
     }
   };
 
-  //회원탈퇴
-  deleteUser = async (req, res, next) => {
-    try {
-      const { password } = req.body;
-      const id = req.user;
+//회원탈퇴
+deleteUser = async (req, res, next) => {
+  try {
+    const { password, confirmPassword } = req.body;
+    const id = res.locals.userId;
 
-      // 서비스 계층에 구현된 deleteUser 로직을 실행합니다.
-      const deleteUser = await this.usersService.deleteUser(id, password);
-
-      return res.status(200).json({ data: deleteUser });
-    } catch (err) {
-      next(err);
+    // 비밀번호와 확인 비밀번호가 일치하는지 검사합니다.
+    if (password !== confirmPassword) {
+      return res.status(400).json({ error: '비밀번호와 확인 비밀번호가 일치하지 않습니다.' });
     }
-  };
+    
+    // 서비스 계층에 구현된 deleteUser 로직을 실행합니다.
+    const deleteUser = await this.usersService.deleteUser(id, password);
+
+    return res.status(200).json({ data: deleteUser });
+  } catch (err) {
+    next(err);
+  }
+};
+
 }

@@ -10,7 +10,7 @@ router.use("/reservation", reservationsRouter);
 
 router.use("/users/", usersRouter);//yw 2번
 
-router.use("/auth", authRouter);
+router.use("/auth", authRouter);//yw 2번
 
 router.use("/reviews", reviewsRouter);
 router.use("/petSitter", petSitterRouter);
