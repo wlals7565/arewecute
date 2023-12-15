@@ -85,10 +85,10 @@ async function fixInfo() {
     .then((result) => {
       if (result.data) {
         alert(`회원정보수정에 성공하였습니다.`);
-        // window.location.href = "/html/mypage.html";
+        window.location.href = "/html/mypage.html";
       } else {
         alert(`회원정보수정에 실패하였습니다.`);
-        // window.location.href = "/html/mypage.html";
+        window.location.href = "/html/mypage.html";
       }
     })
     .catch((error) => {
