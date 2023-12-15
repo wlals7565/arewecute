@@ -33,6 +33,7 @@ export class PetSittersService {
     if (!petSitter) throw new Error("NoPetSitter");
 
     return {
+      id: petSitter.id,
       name: petSitter.name,
       career: petSitter.career,
       comment: petSitter.comment,

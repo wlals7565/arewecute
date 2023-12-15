@@ -21,12 +21,12 @@ export default class ReviewsRepository {
     try {
       const result = await reviews.findAll({
         where: { petSitterId },
-        include: [{ model: users, as: "user", attributes: ["name"] }],
+        include: [{ model: users, as: "user", attributes: ["name"] }]
       });
       const averageRate = result.reduce((acc, cur) => acc + cur.rate, 0) / result.length;
-      return {result, averageRate};
+      return { result, averageRate };
     } catch (error) {
-      console.error(error)
+      console.error(error);
       next(error);
     }
   }
@@ -49,16 +49,15 @@ export default class ReviewsRepository {
     }
   }
 
-  async getMyReviews(id, next){
+  async getMyReviews(id, next) {
     try {
       const result = await reviews.findAll({
-        where: {userId: id},
-        include: [{model: pet_sitters, as: "petSitter"}],
+        where: { userId: id },
+        include: [{ model: pet_sitters, as: "petSitter" }]
       });
-      console.log(result);
       return result;
-    } catch(error){
-      next(error)
+    } catch (error) {
+      next(error);
     }
   }
 }

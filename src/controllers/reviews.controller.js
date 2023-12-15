@@ -1,6 +1,5 @@
 import ReviewsService from "../services/reviews.service.js";
 
-
 const reviewsService = new ReviewsService();
 
 //A가 B를 안 가진다. B를 이용할 뿐
@@ -60,17 +59,16 @@ export default class ReviewsController {
     } else {
       const result = await reviewsService.patchReview(userId, petSitterId, reviewId, comment, rate, next);
       if (result) {
-        console.log(result)
-        res.json({ code: 200, message: "성공적으로 리뷰를 수정하였습니다."});
-      }
-      else {
-        res.json({ code: 404, message: "사용자님의 해당 리뷰를 찾을 수 없습니다." })
+        console.log(result);
+        res.json({ code: 200, message: "성공적으로 리뷰를 수정하였습니다." });
+      } else {
+        res.json({ code: 404, message: "사용자님의 해당 리뷰를 찾을 수 없습니다." });
       }
     }
   }
   //리뷰인데 내 리뷰 펫시터 정보까지?
-  async getMyReview(req,res,next) {
-    const result =  await reviewsService.getMyReviews(res.locals.userId, next);
+  async getMyReview(req, res, next) {
+    const result = await reviewsService.getMyReviews(res.locals.userId, next);
     res.json(result);
   }
 }
