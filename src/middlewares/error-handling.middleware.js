@@ -33,11 +33,34 @@ export default function (err, req, res, next) {
         errorMessage: "로그인을 해주세요!"
       });
 
-    // product router
-    case "NoProduct":
-      return res.status(404).json({
-        errorMessage: "상품이 존재하지 않습니다."
+    //reservation
+    case "Prereservation":
+      return res.status(400).json({
+        success: false,
+        errorMessage: "해당 펫시터는 그 날 예약이 불가능합니다."
       });
+    case "PastThanToday":
+      return res.status(400).json({
+        success: false,
+        errorMessage: "오늘 이후의 날짜로 예약해주세요."
+      });
+    case "ownerReservation":
+      return res.status(403).json({
+        success: false,
+        message: "예약 조회에 권한이 없습니다."
+      });
+    case "NoReservation":
+      return res.status(404).json({
+        success: false,
+        errorMessage: "해당 예약을 찾을 수 없습니다."
+      });
+
+    case "CompletedReservation":
+      return res.status(400).json({
+        success: false,
+        errorMessage: "지난 예약은 변경이 불가능합니다."
+      });
+
     case "Forbidden":
       return res.status(403).send({
         errorMessage: "권한이 없습니다."
