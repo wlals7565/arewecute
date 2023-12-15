@@ -60,8 +60,8 @@ Content-Type: application/json
   "petSitterId" : "1",
   "animal" : "dog",
   "company" : "test1",
-  "date" : "2023-12-14T16:25:14.389Z",
-  "intro" : "히히히"
+  "date" : "2023-12-14",
+  "comment" : "히히히"
 }
 
 ### 펫시터조회
