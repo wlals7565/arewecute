@@ -55,10 +55,6 @@ export class ReservationsController {
 
       const data = await this.reservationService.readByIdWithUser({ id: reservationId });
 
-      if (!data) {
-        throw new Error("NoReservation");
-      }
-
       //userId랑 다르면 읽기 불가
       const ownerReservation = data.userId === userId;
       if (!ownerReservation) {
