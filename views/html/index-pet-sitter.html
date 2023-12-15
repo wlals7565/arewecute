@@ -12,9 +12,11 @@
       crossorigin="anonymous"
     />
     <script type="module" src="../js/pet-sitter.js"></script>
+    <script type="module" src="../js/login.js"></script>
   </head>
   <body>
     <!-- Header -->
+    <div id="1"></div>
     <div class="container">
       <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
@@ -23,13 +25,19 @@
         </a>
         <ul class="nav nav-pills">
           <li class="nav-item">
-            <a href="/views/html/index.html" class="nav-link px-2 link-body-emphasis"><strong>Home</strong></a>
+            <a href="/views/html/index-pet-sitter.html" class="nav-link px-2 link-body-emphasis"><strong>Home</strong></a>
           </li>
           <li class="nav-item">
             <a href="/views/html/mypage.html" class="nav-link px-2 link-body-emphasis"><strong>Mypage</strong></a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link px-2 link-body-emphasis"><strong>Logout</strong></a>
+          </li>
+          <li id="loginDiv" class="nav-item">
+            <a href="#" class="nav-link px-2 link-body-emphasis" data-bs-toggle="modal" data-bs-target="#logInModal"><strong>Login</strong></a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link px-2 link-body-emphasis" data-bs-toggle="modal" data-bs-target="#signUpModal"><strong>SignUp</strong></a>
           </li>
         </ul>
       </header>
@@ -59,33 +67,75 @@
     
     <!-- 예약 전체보기 -->
     <div class="wrapAllPetSitter">
-      <div class="container my-4">
-        <div class="d-flex flex-wrap justify-content-center py-3 border">
-          <a href="/" class="d-flex align-items-center m-4 me-md-auto link-body-emphasis text-decoration-none">
-            <img class="bi m-2 mx-5" src="../contents/${petSitter.animal}.png" width="150" alt="dog" />
-            <div class="fs-4">
-              <P class="h2"><strong>${petSitter.name} </strong><strong class="h3">sitter</strong></P>
-              <p class="mt-2">comment : <strong class="h5"><strong>${petSitter.comment}</strong></strong></p> 
+    </div>
+
+    <!-- 로그인 모달 -->
+    <div class="modal fade" id="logInModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="text-center">
+            <h3 class="m-3 font-weight-normal"><strong>Log-In</strong></h3>
+          </div>
+          <div class="m-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="loginInputEmail" aria-describedby="emailHelp">
+          </div>
+          <div class="m-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="loginInputPassword">
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <a href="/" class="btn btn-outline-dark m-3" data-bs-toggle="modal" data-bs-target="#signUpModal" role="button">회원 가입</a>
             </div>
-          </a>
-          <a href="/" class="d-flex align-items-center m-4 me-md-auto link-body-emphasis text-decoration-none">
-            <div href="/" class="m-4 align-self-center me-auto text-decoration-none">
-                <P class="h4">Career<strong class="h3"><strong> ${petSitter.career}</strong>  month</strong></P>
-                <P class="h4">Animal<strong class="h3"><strong> ${petSitter.animal}</strong></strong></P>
-                <P class="h4">Grades<strong class="h3"><strong> 5.0</strong></strong></P>
-              </div>
-            </div>
-          </a>
-          <a href="/" class="d-flex align-items-center m-4 me-md-auto link-body-emphasis text-decoration-none">
-          <div href="/" class="m-4 align-self-center me-auto text-decoration-none">
-            <div class="fs-3 text-center">
-              <P class="h4 text-black"><strong>예약하기</strong></P>
+            <div>
+              <button type="submit" id="loginButton" class="btn btn-outline-dark m-3">로그인</button>
             </div>
           </div>
-          </a>
         </div>
       </div>
-    </div> 
+    </div>
+
+    <!-- 회원가입 모달 -->
+    <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="text-center">
+            <h3 class="m-3 font-weight-normal"><strong>Sign-Up</strong></h3>
+          </div>
+          <div class="m-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="m-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="m-3">
+            <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword2">
+          </div>
+          <div class="m-3">
+            <label for="exampleUserName" class="form-label">Username</label>
+            <input type="email" class="form-control" id="exampleUserName" aria-describedby="nameHelp">
+          </div>
+          <div class="m-3">
+            <label for="exampleRegion" class="form-label">Region</label>
+            <input type="email" class="form-control" id="exampleRegion" aria-describedby="regionHelp">
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <a href="#" class="btn btn-outline-dark m-3" role="button" data-bs-dismiss="modal">뒤로가기</a>
+            </div>
+            <div>
+              <button type="submit" class="btn btn-outline-dark m-3">가입하기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <!-- Footer -->
     <div class="container">
       <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">

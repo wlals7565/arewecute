@@ -1,6 +1,8 @@
+console.log();
+
 export const generatePetSitterCards = async (petSitters) => {
   const cardList = document.querySelector(".wrapAllPetSitter");
-  // petSitters.sort((a, b) => b.vote_count - a.vote_count);
+  // petSitters.sort((a, b) => b.rate - a.rate);
   cardList.innerHTML = petSitters
     .map(
       (petSitter) => `
@@ -40,6 +42,9 @@ async function fetchPetSitters() {
   return cards;
 }
 
-export const petSitters = await fetchPetSitters();
-
+const petSitters = await fetchPetSitters();
 generatePetSitterCards(petSitters);
+
+let isLoggedIn = false;
+// 로그인 상태를 나타내는 변수
+export default isLoggedIn;
