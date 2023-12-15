@@ -5,11 +5,11 @@ const logoutDiv = document.getElementById("logoutDiv");
 
 export const generatePetSitterCards = async (petSitters) => {
   const cardList = document.querySelector(".wrapAllPetSitter");
-  // petSitters.sort((a, b) => b.rate - a.rate);
+  petSitters.sort((a, b) => b.averageRate - a.averageRate);
   cardList.innerHTML = petSitters
     .map(
       (petSitter) => `
-      <div class="container my-4">
+      <div class="container my-4" value="${petSitter.id}">
       <div class="d-flex flex-wrap justify-content-center py-3 border">
         <a href="/html/pet-sitter-by-id.html?petSitterId=${petSitter.id}" class="d-flex align-items-center m-4 me-md-auto link-body-emphasis text-decoration-none">
           <img class="bi m-2 mx-5" src="../contents/${petSitter.animal}.png" width="150" alt="dog" />
@@ -21,12 +21,12 @@ export const generatePetSitterCards = async (petSitters) => {
         <div href="/" class="m-2 align-self-center me-auto text-decoration-none">
           <P class="h4">Career<strong class="h3"><strong> ${petSitter.career}</strong>  month</strong></P>
           <P class="h4">Animal<strong class="h3"><strong> ${petSitter.animal}</strong></strong></P>
-          <P class="h4">Grades<strong class="h3"><strong> 5.0</strong></strong></P>
+          <P class="h4">Grades<strong class="h3"><strong> ${petSitter.averageRate}</strong></strong></P>
         </div>
         <div class="d-flex align-items-center m-4 me-md-auto link-body-emphasis text-decoration-none">
         <div class="m-2 align-self-center me-auto text-decoration-none" data-bs-toggle="modal" data-bs-target="#reservationModal">
           <div class="fs-3 text-center">
-            <p class="h4 text-black"><strong>예약하기</strong></p>
+            <p class="h4 text-black"><strong class="petSitterId:${petSitter.id}" data-bs-toggle="modal" data-bs-target="#reservationModal">예약하기</strong></p>
           </div>
         </div>
         </div>

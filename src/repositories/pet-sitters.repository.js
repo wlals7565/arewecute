@@ -6,18 +6,20 @@ export class PetSittersRepository {
   findAllPetSitters = async () => {
     // ORM인 Sequelize에서 pet_sitters 모델의 findAll 메서드를 사용해 데이터를 요청
     const petSitters = await pet_sitters.findAll({
-      include: [{model: reviews, as: "reviews"}]
+      include: [{ model: reviews, as: "reviews" }]
     });
-    const averageRates = petSitters.map(sitter => {
+    const averageRates = petSitters.map((sitter) => {
       if (sitter.reviews.length > 0) {
-        const totalRate = sitter.reviews.reduce((acc, cur) => acc + cur.rate, 0);
-        return { id: sitter.id, averageRate: totalRate / sitter.reviews.length };
+        const totalRate = sitter.reviews.reduce((acc, cur) => acc + cur.rate, 0) / sitter.reviews.length;
+        const averageRate = Math.round(totalRate * 10) / 10;
+        console.log(averageRate);
+        return { id: sitter.id, averageRate: averageRate };
       } else {
         return { id: sitter.id, averageRate: 0 };
       }
     });
-    petSitters.forEach(sitter => {
-      const averageRate = averageRates.find(rate => rate.id === sitter.id);
+    petSitters.forEach((sitter) => {
+      const averageRate = averageRates.find((rate) => rate.id === sitter.id);
       sitter.averageRate = averageRate ? averageRate.averageRate : 0;
     });
     //????? 구조가 너무 이상한데

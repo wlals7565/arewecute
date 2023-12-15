@@ -1,4 +1,5 @@
-export const generatePetSitterCards = async (petSitterData) => {
+export const generatePetSitterCards = async (petSitterData, avgRate) => {
+  const RoundedAvgRate = Math.round(avgRate * 10) / 10;
   cardList.innerHTML = petSitterData
     .map(
       (petSitter) => `
@@ -14,7 +15,7 @@ export const generatePetSitterCards = async (petSitterData) => {
         <div class="m-2 align-self-center me-auto text-decoration-none">
           <P class="h4">Career<strong class="h3"><strong> ${petSitter.career}</strong>  month</strong></P>
           <P class="h4">Animal<strong class="h3"><strong> ${petSitter.animal}</strong></strong></P>
-          <P class="h4">Grades<strong class="h3"><strong> 5.0</strong></strong></P>
+          <P class="h4">Grades<strong class="h3"><strong> ${RoundedAvgRate}</strong></strong></P>
         </div>
         <div class="d-flex align-items-center m-4 me-md-auto link-body-emphasis text-decoration-none">
         <div class="m-2 align-self-center me-auto text-decoration-none" data-bs-toggle="modal" data-bs-target="#reservationModal">
@@ -31,7 +32,7 @@ export const generatePetSitterCards = async (petSitterData) => {
 };
 
 export const generatePetSitterReviews = async (reviewsData) => {
-  reviewList.innerHTML = reviewsData
+  reviewList.innerHTML = reviewsData.result
     .map(
       (review) => `
       <div class="container my-2">
@@ -46,7 +47,6 @@ export const generatePetSitterReviews = async (reviewsData) => {
 
 const cardList = document.querySelector(".wrapPetSitter");
 const reviewList = document.querySelector("#reviews");
-
 // URL에서 쿼리 문자열을 가져옵니다
 let queryString = window.location.search;
 // URLSearchParams 객체를 사용하여 쿼리 문자열을 파싱합니다
@@ -55,6 +55,7 @@ let searchParams = new URLSearchParams(queryString);
 let petSitterId = parseInt(searchParams.get("petSitterId"));
 const petSitterData = await fetchPetSitters(petSitterId);
 const reviewsData = await fetchReviews(petSitterId);
+let avgRate = reviewsData.averageRate;
 async function fetchPetSitters(petSitterId) {
   const response = await fetch("http://localhost:3000/api/petSitter/id/" + `${petSitterId}`);
   const responseData = await response.json();
@@ -72,7 +73,7 @@ async function fetchReviews(petSitterId) {
 
 export const petSitter = await fetchPetSitters(petSitterId);
 
-generatePetSitterCards(petSitterData);
+generatePetSitterCards(petSitterData, avgRate);
 generatePetSitterReviews(reviewsData);
 
 // HTML에 같이 놓고 display block > CSS를 바꾼다.

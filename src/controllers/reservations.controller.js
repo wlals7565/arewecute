@@ -7,7 +7,7 @@ export class ReservationsController {
 
   createOne = async (req, res, next) => {
     try {
-      if (!req.body.petSitterId || !req.body.company || !req.body.comment || !req.body.animal || !req.body.date) {
+      if (!req.body.petSitterId || !req.body.comment || !req.body.animal || !req.body.date) {
         throw new Error("InvalidParamsError");
       }
 
