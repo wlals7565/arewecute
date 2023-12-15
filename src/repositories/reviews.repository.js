@@ -23,7 +23,8 @@ export default class ReviewsRepository {
         where: { petSitterId },
         include: [{ model: users, as: "user", attributes: ["name"] }],
       });
-      return result;
+      const averageRate = result.reduce((acc, cur) => acc + cur.rate, 0) / result.length;
+      return {result, averageRate};
     } catch (error) {
       console.error(error)
       next(error);
