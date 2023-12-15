@@ -1,11 +1,28 @@
 import db from "../../models/index.cjs";
-const { pet_sitters } = db;
+const { pet_sitters, reviews } = db;
 
 export class PetSittersRepository {
   /** 전체 펫시터 조회 */
   findAllPetSitters = async () => {
     // ORM인 Sequelize에서 pet_sitters 모델의 findAll 메서드를 사용해 데이터를 요청
-    const petSitters = await pet_sitters.findAll();
+    const petSitters = await pet_sitters.findAll({
+      include: [{model: reviews, as: "reviews"}]
+    });
+    const averageRates = petSitters.map(sitter => {
+      if (sitter.reviews.length > 0) {
+        const totalRate = sitter.reviews.reduce((acc, cur) => acc + cur.rate, 0);
+        return { id: sitter.id, averageRate: totalRate / sitter.reviews.length };
+      } else {
+        return { id: sitter.id, averageRate: 0 };
+      }
+    });
+    petSitters.forEach(sitter => {
+      const averageRate = averageRates.find(rate => rate.id === sitter.id);
+      sitter.averageRate = averageRate ? averageRate.averageRate : 0;
+    });
+    //????? 구조가 너무 이상한데
+    //const averageRate = petSitters.reviews.reduce((acc, cur) => acc + cur.rate, 0) / result.length;
+    //console.log(averageRate);
     return petSitters;
   };
 
