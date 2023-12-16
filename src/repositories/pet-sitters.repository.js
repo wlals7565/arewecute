@@ -1,5 +1,6 @@
 import db from "../../models/index.cjs";
 const { pet_sitters, reviews } = db;
+import { Op } from 'sequelize';
 
 export class PetSittersRepository {
   /** 전체 펫시터 조회 */
@@ -39,12 +40,34 @@ export class PetSittersRepository {
   };
 
   /** 시터 검색조회 */
-  findPetSitterBySearch = async (career, animal) => {
+  findPetSitterBySearch = async (career, animal, next) => {
     // ORM인 Sequelize에서 pet_sitters 모델 중 로우쿼리로 데이터를 요청
-    const petSitter = await pet_sitters.findOne({
-      where: { career, animal }
-    });
-
-    return petSitter;
+    try {
+      let petSitter;
+      if (animal === "cat" || animal === "dog") {
+        petSitter = await pet_sitters.findOne({
+          where: {
+            career: {
+              [Op.gte]: career
+            },
+            animal
+          }
+        });
+      } else {
+        petSitter = await pet_sitters.findAll({
+          where: {
+            career: {
+              [Op.gte]: career
+            },
+            animal: {
+              [Op.notIn]: ["cat", "dog"]
+            }
+          }
+        });
+      }
+      return petSitter;
+    } catch (error) {
+      next(error);
+    }
   };
 }

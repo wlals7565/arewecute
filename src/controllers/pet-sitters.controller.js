@@ -26,16 +26,13 @@ export class PetSittersController {
   };
 
   findPetSitterBySearch = async (req, res, next) => {
-    try {
-      const career = req.query.career;
-      const animal = req.query.animal;
-
+      const {career, animal} = req.body
+      if(!career && !animal ){
+        res.status(404).json({code: 400, message: "본문이 잘못되어 있습니다."});
+        return;
+      }
       // 서비스 계층에 구현된 updateUser 로직을 실행합니다.
-      const searchedPetSitter = await this.petSittersService.findPetSitterBySearch(career, animal);
-
-      return res.status(200).json({ data: searchedPetSitter });
-    } catch (err) {
-      next(err);
-    }
+      const searchedPetSitter = await this.petSittersService.findPetSitterBySearch(career, animal, next);
+      return res.status(200).json({ searchedPetSitter });
   };
 }
