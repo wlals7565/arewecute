@@ -11,14 +11,12 @@ let petSitterId = 0;
 
 document.addEventListener("click", function (event) {
   let clickedElementId = event.target.id;
-  let modalClicked =
-    String(clickedElementId).includes("fixReservation") || String(clickedElementId).includes("deleteReservation");
-  if (modalClicked) {
+  let fixModalClicked = String(clickedElementId).includes("fixReservation");
+  let deleteModalClicked = String(clickedElementId).includes("deleteReservation");
+  if (fixModalClicked || deleteModalClicked) {
     petSitterId = Number(String(clickedElementId).split(":")[2]);
     reservationId = Number(String(clickedElementId).split(":")[4]);
-    console.log(petSitterId, reservationId);
   } else {
-    console.log(petSitterId, reservationId);
   }
   if (String(clickedElementId).includes("deleteReservation")) {
     deleteReservation();
