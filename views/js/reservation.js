@@ -1,12 +1,13 @@
 const loginDiv = document.getElementById("loginDiv");
 
 const reservationButton = document.getElementById("reservationButton");
+console.log(reservationButton);
 
-let petSitterId = "1";
+let petSitterId = "0";
 
 document.addEventListener("click", function (event) {
   let clickedElementId = event.target.className;
-  let isNotLoggedIn = (loginDiv.style.display = "block");
+  let isNotLoggedIn = Boolean(loginDiv.style.display === "block");
   let modalClicked = String(clickedElementId).includes("petSitterId");
   if (isNotLoggedIn && modalClicked) {
     alert(`로그인이 필요한 서비스입니다.`);
@@ -38,7 +39,8 @@ async function reservation() {
   })
     .then((response) => response.json())
     .then((result) => {
-      if (result.success) {
+      console.log(result);
+      if (result) {
         alert(`예약에 성공하였습니다.`);
         window.location.href = "/html/index-pet-sitter.html";
       } else {

@@ -107,7 +107,3 @@ function updateLoginButton() {
 }
 
 updateLoginButton(isLoggedIn);
-// HTML에 같이 놓고 display block > CSS를 바꾼다.
-// body안에 z인덱스(오마이갓) z인덱스를 1을주는식으로
-// js 함수를 구현하는데
-// 이벤트리스너같은거로 클릭이 발생하면 Body안에 넣어준다(뿌려주는거랑 똑같이)

@@ -79,7 +79,7 @@ get {{host}}/api/petSitter/search?career=10&animal=dog
 Content-Type: application/json
 
 ### 펫시터리뷰조회
-get {{host}}/api/reviews/1
+get {{host}}/api/reviews/
 Content-Type: application/json
 
 ### 예약조회

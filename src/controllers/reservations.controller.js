@@ -61,6 +61,13 @@ export class ReservationsController {
         throw new Error("ownerReservation");
       }
 
+      //해당 펫시터의 다른 예약과 날짜 겹치는지 확인
+      const prereservation = await this.reservationService.isReserved({ petSitterId, reservedAt });
+
+      if (prereservation) {
+        throw new Error("Prereservation");
+      }
+
       return res.status(200).json({
         success: true,
         message: "예약 조회에 성공했습니다.",
