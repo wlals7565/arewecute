@@ -17,6 +17,7 @@
     <script type="module" src="/js/mypage-reviews.js"></script>
     <script type="module" src="/js/fix-reviews.js"></script>
     <script type="module" src="/js/fix-reservation.js"></script>
+    <script type="module" src="/js/create-reviews.js"></script>
   </head>
   <body>
     <!-- Header -->
@@ -59,6 +60,36 @@
 
     <!-- inFoModal뿌리기 -->
     <div class="wrapMyInfoModal"></div>
+
+    <!-- 리뷰쓰기모달 -->
+    <div class="modal fade" id="createReviewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="auth-wrapper">
+          <div class="text-center">
+            <h3 class="mb-3 font-weight-normal"><strong>리뷰 작성하기</strong></h3>
+          </div>
+          <div class="m-3">
+            <label for="exampleComment" class="form-label">Comment</label>
+            <input type="text" class="form-control" id="createReviewComment" aria-describedby="regionHelp">
+          </div>
+          <div class="m-3">
+            <label for="exampleRate" class="form-label">Rate(1~5)</label>
+            <input type="range" class="form-range" min="1" max="5" id="createReviewRate"></input>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <button type="submit" class="btn btn-outline-dark m-3">뒤로가기</button>
+            </div>
+            <div>
+              <button type="submit" id="createReviewButton" class="btn btn-outline-dark m-3">리뷰작성</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <!-- 마무리 -->
     <div class="d-flex justify-content-center align-items-center">
       <div>
