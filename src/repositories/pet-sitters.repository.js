@@ -45,7 +45,7 @@ export class PetSittersRepository {
     try {
       let petSitter;
       if (animal === "cat" || animal === "dog") {
-        petSitter = await pet_sitters.findOne({
+        petSitter = await pet_sitters.findAll({
           where: {
             career: {
               [Op.gte]: career
