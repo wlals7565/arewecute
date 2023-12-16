@@ -1,4 +1,5 @@
 const Sequelize = require("sequelize");
+//#TODO 관계 맺으면 알아서 생성되는 필드들이 들어가 있음.
 module.exports = function (sequelize, DataTypes) {
   return sequelize.define(
     "reviews",
@@ -38,7 +39,12 @@ module.exports = function (sequelize, DataTypes) {
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
-        defaultValue: Sequelize.fn("now")
+        defaultValue: DataTypes.NOW
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW
       }
     },
     {

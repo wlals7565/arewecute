@@ -31,7 +31,7 @@ module.exports = {
       company: {
         type: Sequelize.STRING
       },
-      intro: {
+      comment: {
         type: Sequelize.STRING,
         allowNull: false
       },
@@ -39,7 +39,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      state: {
+      status: {
         type: Sequelize.STRING,
         allowNull: false,
         defaultValue: "예약중"
@@ -49,6 +49,11 @@ module.exports = {
         allowNull: false
       },
       createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("now")
+      },
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn("now")

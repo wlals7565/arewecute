@@ -1,3 +1,4 @@
+//# TODO: 뭔지 설명할 것
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('SequelizeMeta', {

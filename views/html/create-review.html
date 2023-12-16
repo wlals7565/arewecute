@@ -13,7 +13,7 @@
     />
   </head>
   <body>
-    <div class="container">
+
       <!-- Header -->
       <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
@@ -36,26 +36,68 @@
     </div>
 
     <!-- 회원가입페이지 -->
-    <form class="auth-wrapper">
-      <div class="text-center">
-        <h3 class="mb-3 font-weight-normal"><strong>리뷰 작성하기</strong></h3>
-      </div>
-      <div class="m-3">
-        <label for="exampleRegion" class="form-label">Comment</label>
-        <input type="email" class="form-control" id="exampleRegion" aria-describedby="regionHelp">
-      </div>
-      <div class="m-3">
-        <label for="customRange2" class="form-label">Example range</label>
-        <input type="range" class="form-range" min="0" max="5" id="customRange2">      </div>
-      <div class="d-flex justify-content-between align-items-center">
-        <div>
-          <button type="submit" class="btn btn-outline-dark m-3">뒤로가기</button>
+
+
+    <div class="container">
+      <form class="auth-wrapper">
+        <div class="text-center">
+          <h3 class="mb-3 font-weight-normal"><strong>리뷰 작성하기</strong></h3>
         </div>
-        <div>
-          <button type="submit" class="btn btn-outline-dark m-3">작성완료</button>
+        <div class="m-3">
+          <label for="exampleRegion" class="form-label">Comment</label>
+          <input type="email" class="form-control" id="exampleRegion" aria-describedby="regionHelp">
+        </div>
+        <div class="m-3">
+          <label for="customRange2" class="form-label">Example range</label>
+          <input type="range" class="form-range" min="0" max="5" id="customRange2">      </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <button type="submit" class="btn btn-outline-dark m-3">뒤로가기</button>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-outline-dark m-3">작성완료</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="text-center">
+            <h3 class="m-3 font-weight-normal"><strong>Sign-Up</strong></h3>
+          </div>
+          <div class="m-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="signupInputEmail" aria-describedby="emailHelp">
+          </div>
+          <div class="m-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="signupInputPassword">
+          </div>
+          <div class="m-3">
+            <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="signupInputConfirmPassword">
+          </div>
+          <div class="m-3">
+            <label for="exampleUserName" class="form-label">Username</label>
+            <input type="text" class="form-control" id="signupInputUsername" aria-describedby="nameHelp">
+          </div>
+          <div class="m-3">
+            <label for="exampleRegion" class="form-label">Region</label>
+            <input type="text" class="form-control" id="signupInputRegion" aria-describedby="regionHelp">
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <a href="#" class="btn btn-outline-dark m-3" role="button" data-bs-dismiss="modal">뒤로가기</a>
+            </div>
+            <div>
+              <button type="submit" id="signupButton" class="btn btn-outline-dark m-3">가입하기</button>
+            </div>
+          </div>
         </div>
       </div>
-    </form>
+    </div>
     
     <!-- Footer -->
     <div class="container fixed-bottom">
@@ -67,20 +109,12 @@
         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
           <li class="ms-3">
             <a class="text-body-secondary" href="https://github.com/visitor17564/arewecute" aria-label="gitHub 주소">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-github"
-                viewBox="0 0 16 16"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
                 <path
                   d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-                />
-                </svg
-            ></a>
-          </li>
+                /></svg>
+          </a>
+            </li>
         </ul>
       </footer>
     </div>

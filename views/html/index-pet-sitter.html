@@ -11,14 +11,16 @@
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
-    <script type="module" src="/js/pet-sitter-by-id.js"></script>
+    <script type="module" src="/js/pet-sitter.js"></script>
     <script type="module" src="/js/login.js"></script>
     <script type="module" src="/js/logout.js"></script>
     <script type="module" src="/js/signup.js"></script>
     <script type="module" src="/js/reservation.js"></script>
+    <script type="module" src="/js/pet-sitter-search.js"></script>
   </head>
   <body>
     <!-- Header -->
+    <div id="1"></div>
     <div class="container">
       <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <a href="/html/index-pet-sitter.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
@@ -48,7 +50,7 @@
     <!-- 검색창 -->
     <div class="input-group w-25 container">
       <div class="align-self-center"><strong>Career&nbsp&nbsp</strong></div>
-      <select class="form-select form-select-lg" aria-label="Default select example">
+      <select id="selectCareer" class="form-select form-select-lg" aria-label="Default select example">
         <option selected>All</option>
         <option value="3">3개월</option>
         <option value="6">6개월</option>
@@ -57,29 +59,23 @@
       <div class="align-self-center"><strong>&nbsp&nbsp이상</strong></div>
       <div class="mx-4"></div>
       <div class="align-self-center"><strong>Animal&nbsp&nbsp</strong></div>
-      <select class="form-select form-select-lg" aria-label="Default select example">
+      <select id="selectAnimal" class="form-select form-select-lg" aria-label="Default select example">
         <option selected>All</option>
         <option value="dog">dog</option>
         <option value="cat">cat</option>
         <option value="others">others</option>
       </select>
       &nbsp&nbsp&nbsp&nbsp
-      <button class="btn btn-dark" type="button">Search</button>
+      <button id="searchPetSitterButton" class="btn btn-dark" type="button">Search</button>
     </div>
     
-    <!-- 펫시터 정보보기 -->
-    <div class="wrapPetSitter"></div>
-    <!-- 펫시터 리뷰보기 -->
-    <div id="reviews" class="container my-4"></div>
-
-    <!-- 마무리 -->
-    <div class="d-flex justify-content-center align-items-center">
-      <div>
-        <a href="/html/index-pet-sitter.html" class="btn btn-outline-dark m-3" role="button">모든시터보기</a>
-      </div>
+    <!-- 펫시터 전체보기 -->
+    <div class="wrapAllPetSitter">
     </div>
 
+    <div id="viewAllPetSitters" class="d-flex justify-content-center align-items-center">
 
+    </div>
 
     <!-- 로그인 모달 -->
     <div class="modal fade" id="logInModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -175,10 +171,11 @@
                 <button type="submit" id="reservationButton" class="btn btn-outline-dark m-3">예약하기</button>
               </div>
             </div>
-          </div>
+          </di>
         </div>
       </div>
     </div>
+    
 
 
     <!-- Footer -->

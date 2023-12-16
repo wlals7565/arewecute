@@ -14,17 +14,26 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: false
       },
       career: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      comment: {
         type: DataTypes.STRING,
         allowNull: false
       },
-      keyword: {
+      animal: {
         type: DataTypes.STRING,
         allowNull: false
       },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
-        defaultValue: Sequelize.fn("now")
+        defaultValue: DataTypes.NOW
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW
       }
     },
     {
