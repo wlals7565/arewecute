@@ -46,6 +46,15 @@ export class PetSittersService {
     const searchedPetSitter = await this.petSittersRepository.findPetSitterBySearch(career, animal, next);
 
     // 비즈니스 로직을 수행한 후 사용자에게 보여줄 데이터를 가공합니다.
-    return searchedPetSitter;
+    return searchedPetSitter.map((petSitter) => {
+      return {
+        id: petSitter.id,
+        name: petSitter.name,
+        career: petSitter.career,
+        comment: petSitter.comment,
+        animal: petSitter.animal,
+        averageRate: petSitter.averageRate
+      };
+    });
   };
 }

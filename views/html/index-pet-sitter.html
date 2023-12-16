@@ -16,6 +16,7 @@
     <script type="module" src="/js/logout.js"></script>
     <script type="module" src="/js/signup.js"></script>
     <script type="module" src="/js/reservation.js"></script>
+    <script type="module" src="/js/pet-sitter-search.js"></script>
   </head>
   <body>
     <!-- Header -->
@@ -49,7 +50,7 @@
     <!-- 검색창 -->
     <div class="input-group w-25 container">
       <div class="align-self-center"><strong>Career&nbsp&nbsp</strong></div>
-      <select class="form-select form-select-lg" aria-label="Default select example">
+      <select id="selectCareer" class="form-select form-select-lg" aria-label="Default select example">
         <option selected>All</option>
         <option value="3">3개월</option>
         <option value="6">6개월</option>
@@ -58,18 +59,22 @@
       <div class="align-self-center"><strong>&nbsp&nbsp이상</strong></div>
       <div class="mx-4"></div>
       <div class="align-self-center"><strong>Animal&nbsp&nbsp</strong></div>
-      <select class="form-select form-select-lg" aria-label="Default select example">
+      <select id="selectAnimal" class="form-select form-select-lg" aria-label="Default select example">
         <option selected>All</option>
         <option value="dog">dog</option>
         <option value="cat">cat</option>
         <option value="others">others</option>
       </select>
       &nbsp&nbsp&nbsp&nbsp
-      <button class="btn btn-dark" type="button">Search</button>
+      <button id="searchPetSitterButton" class="btn btn-dark" type="button">Search</button>
     </div>
     
-    <!-- 예약 전체보기 -->
+    <!-- 펫시터 전체보기 -->
     <div class="wrapAllPetSitter">
+    </div>
+
+    <div id="viewAllPetSitters" class="d-flex justify-content-center align-items-center">
+
     </div>
 
     <!-- 로그인 모달 -->

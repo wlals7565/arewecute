@@ -26,7 +26,7 @@ async function signup() {
   })
     .then((response) => response.json())
     .then((result) => {
-      if (result.success) {
+      if (result) {
         alert(`회원가입에 성공하였습니다.`);
         window.location.href = "/html/index-pet-sitter.html";
       } else {
