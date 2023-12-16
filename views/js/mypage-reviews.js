@@ -27,7 +27,7 @@ export const generateReviewsCards = async (myReviews) => {
             <P class="h4"><strong>${myReview.createdAt.substring(0, 10)}</strong></P>
             <button id="fixReview:petSitterId:${myReview.petSitter.id}:reviewId:${
         myReview.id
-      }" type="button"  class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#fixReviewModal${
+      }" type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#fixReviewModal${
         myReview.id
       }">리뷰수정</button>
             <button id="deleteReview:petSitterId:${myReview.petSitter.id}:reviewId:${

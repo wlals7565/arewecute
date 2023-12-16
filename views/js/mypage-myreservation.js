@@ -28,8 +28,14 @@ export const generateReservationCards = async (myReservations) => {
           <div class="fs-3 text-center">
             <P class="h4"><strong>${reservation.reservedAt.substring(0, 10)}</strong></P>
             <P id="cancel" class="h4 text-dark"><strong>${reservation.status}</strong></P>
-            <button type="button" class="btn btn-outline-dark">예약수정</button>
-            <button type="button" class="btn btn-outline-danger">예약취소</button>
+            <button type="button" id="fixReservation:petSitterId:${reservation.petSitterId}:reservationId:${
+        reservation.id
+      }" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#fixReservationModal${
+        reservation.id
+      }">예약수정</button>
+            <button type="button" id="deleteReservation:petSitterId:${reservation.petSitterId}:reservationId:${
+        reservation.id
+      }" class="btn btn-outline-danger" >예약취소</button>
           </div>
         </div>
       </div>
@@ -38,7 +44,48 @@ export const generateReservationCards = async (myReservations) => {
           <div class="col-sm-7 mx-5 my-3 h5"><strong>Your Comment : </strong>${reservation.comment}</strong></div>
         </div>
       </div>
-    </div>`
+    </div>
+    <div class="modal fade" id="fixReservationModal${
+      reservation.id
+    }" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="auth-wrapper">
+          <div class="text-center">
+            <h3 class="mb-3 font-weight-normal"><strong>예약수정</strong></h3>
+          </div>
+          <div class="m-3">
+            <label for="example" class="form-label">Reservation Date</label>
+            <input type="date" class="form-control" value="${reservation.reservedAt.substring(0, 10)}" id="InputDate${
+        reservation.id
+      }" aria-describedby="nameHelp">
+          </div>
+          <div class="m-3">
+            <label for="example" class="form-label">Your Pet</label>
+            <input type="text" class="form-control" value="${reservation.animal}" id="InputAnimal${
+        reservation.id
+      }" aria-describedby="regionHelp">
+          </div>
+          <div class="m-3">
+            <label for="example" class="form-label">Comment</label>
+            <input type="text" class="form-control" value="${reservation.comment}" id="InputComment${
+        reservation.id
+      }" aria-describedby="regionHelp">
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <a href="#" class="btn btn-outline-dark m-3" role="button" data-bs-dismiss="modal">뒤로가기</a>
+            </div>
+            <div>
+              <button type="submit" id="fixReservationButton:${
+                reservation.id
+              }" class="btn btn-outline-dark m-3">수정하기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`
     )
     .join("");
 };
