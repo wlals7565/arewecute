@@ -40,7 +40,7 @@ async function reservation() {
     .then((response) => response.json())
     .then((result) => {
       console.log(result);
-      if (result) {
+      if (result.success) {
         alert(`예약에 성공하였습니다.`);
         window.location.href = "/html/index-pet-sitter.html";
       } else {

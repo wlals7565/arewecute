@@ -16,7 +16,7 @@ document.addEventListener("click", function (event) {
 
 async function createReview() {
   const comment = document.getElementById(`createReviewComment`).value;
-  const rate = document.getElementById(`createReviewComment`).value; // 서버로 전송할 데이터 생성
+  const rate = document.getElementById(`createReviewRate`).value; // 서버로 전송할 데이터 생성
   const reviewInfo = {
     rate,
     comment
