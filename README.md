@@ -13,7 +13,7 @@
 - ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white)
 
 # 프로젝트 과정 소개
-table>
+<table>
 <thead>
 <tr>
 <th align="left"><strong>주요 작업</strong></th>
